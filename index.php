@@ -1,3 +1,17 @@
+<?php
+require_once("conf/conexion.php");
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["enviar"]) && $_POST["enviar"] == "1") {
+    try {
+        require_once("models/Usuario.php");
+        $usuario = new Usuario();
+        $usuario->login();
+    } catch (Exception $e) {
+        error_log("Error en el proceso de login: " . $e->getMessage());
+        header("Location: index.php?m=3");
+        exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -26,19 +40,21 @@
   </head>
   <body>
     <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
-      <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
-        <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> Empresa <span class="tx-normal">]</span></div>
-        <div class="tx-center mg-b-30">Certificados y Diplomas</div>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Ingrese correo electronico">
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="Ingrese contraseña">
-        </div>
-        <button type="submit" class="btn btn-info btn-block">ingresar</button>
-      </div>
+       <form action="" method="post">
+          <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
+            <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> Empresa <span class="tx-normal">]</span></div>
+            <div class="tx-center mg-b-30">Certificados y Diplomas</div>
+            <div class="form-group">
+              <input type="text" id="usu_corr" name="usu_corr" class="form-control" placeholder="Ingrese correo electronico">
+            </div>
+            <div class="form-group">
+              <input type="password" id="usu_pass" name ="usu_pass" class="form-control" placeholder="Ingrese contraseña">
+            </div>
+            <input type="hidden" name ="enviar" class="form-control" value="1">
+            <button type="submit" class="btn btn-info btn-block">ingresar</button>
+          </div>
+       </form>
     </div>
-
     <script src="public/lib/jquery/jquery.js"></script>
     <script src="public/lib/popper.js/popper.js"></script>
     <script src="public/lib/bootstrap/bootstrap.js"></script>

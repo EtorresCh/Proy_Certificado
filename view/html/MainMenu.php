@@ -6,20 +6,26 @@
           <div class="br-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
             <span class="menu-item-label">Inicio</span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
+          </div>
+        </a>
         <a href="mailbox.html" class="br-menu-link">
           <div class="br-menu-item">
           <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-24"></i>
             <span class="menu-item-label">Mis Cursos</span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
+          </div>
+        </a>
         <a href="card-dashboard.html" class="br-menu-link">
           <div class="br-menu-item">
           <i class="menu-item-icon icon ion-ios-gear-outline tx-20"></i>
             <span class="menu-item-label">Mi Perfil</span>
-          </div><!-- menu-item -->
-        </a><!-- br-menu-link -->
-      </div><!-- br-sideleft-menu -->
+          </div>
+        </a>
+        <a href="card-dashboard.html" class="br-menu-link">
+          <div class="br-menu-item">
+          <i class="menu-item-icon icon ion-power tx-20"></i>
+            <span class="menu-item-label">Cerrar Sesion</span>
+          </div>
+        </a>
+      </div>
 
     </div>
