@@ -7,14 +7,15 @@
         <nav class="nav">
           <div class="dropdown">
             <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-              <span class="logged-name hidden-md-down">Katherine</span>
-              <img src="../http://via.placeholder.com/64x64" class="wd-32 rounded-circle" alt="">
+              <span class="logged-name hidden-md-down"><?php echo $_SESSION['usu_nom'];?></span>
+              <img src="../../public/img/perfil.png"lass="wd-32 rounded-circle" alt="">
               <span class="square-10 bg-success"></span>
             </a>
+            <input type="hidden" id="usu_id" value="<?php echo $_SESSION['usu_id'];?>">
             <div class="dropdown-menu dropdown-menu-header wd-200">
               <ul class="list-unstyled user-profile-nav">
-                <li><a href=""><i class="icon ion-ios-person"></i> Perfil</a></li>
-                <li><a href=""><i class="icon ion-power"></i> Cerrar Sesion</a></li>
+                <li><a href="../UsuPerfil/"><i class="icon ion-ios-person"></i> Perfil</a></li>
+                <li><a href="../../index.php"><i class="icon ion-power"></i> Cerrar Sesion</a></li>
               </ul>
             </div>
           </div>

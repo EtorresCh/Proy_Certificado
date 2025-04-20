@@ -1,4 +1,5 @@
 <?php
+session_start();
 class Conectar {
     protected $dbh;
     protected function Conexion() {
@@ -14,7 +15,7 @@ class Conectar {
             return $this->dbh->query("SET NAMES 'utf8'");
     }
 
-    public function ruta() {
+    public static function ruta() {
         return "http://localhost:/Proy_Certificado/";
     }
 }
