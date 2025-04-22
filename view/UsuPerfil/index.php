@@ -22,6 +22,7 @@
         <p class="mg-b-0">Pantalla perfil</p>
       </div>
       <div class="br-pagebody">
+        
       </div>
     </div>
     <?php require_once '../html/MainJs.php';?>
