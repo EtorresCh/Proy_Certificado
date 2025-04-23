@@ -4,23 +4,23 @@
     $usuario = new Usuario();
     switch($_GET["op"]){
         case "listar_cursos":
-        $datos=$usuario->get_cursos_x_usuario($_POST["usu_id"]);
-        $data= Array();
-        foreach($datos as $row){
-            $sub_array = array();
-            $sub_array[] = $row["cur_nom"];
-            $sub_array[] = $row["fech_ini"];
-            $sub_array[] = $row["fech_fin"];
-            $sub_array[] = $row["inst_nom"]." ".$row["inst_apep"];
-            $sub_array[] = '<button type="button" onClick="certificado('.$row["curusu_id"].');" id="'.$row["curusu_id"].'" class="btn btn-outline-primary btn-icon"><i  style="margin:3px" class="fa fa-id-card-o"></i></button>';
-            $data[]=$sub_array;
-        }
-        $results=array(
-            "sEcho"=>1,
-            "iTotalRecords"=>count($data),
-            "iTotalDisplayRecords"=>count($data),
-            "aaData"=>$data);
-        echo json_encode($results);
+            $datos=$usuario->get_cursos_x_usuario($_POST["usu_id"]);
+            $data= Array();
+            foreach($datos as $row){
+                $sub_array = array();
+                $sub_array[] = $row["cur_nom"];
+                $sub_array[] = $row["fech_ini"];
+                $sub_array[] = $row["fech_fin"];
+                $sub_array[] = $row["inst_nom"]." ".$row["inst_apep"];
+                $sub_array[] = '<button type="button" onClick="certificado('.$row["curusu_id"].');" id="'.$row["curusu_id"].'" class="btn btn-outline-primary btn-icon"><i  style="margin:3px" class="fa fa-id-card-o"></i></button>';
+                $data[]=$sub_array;
+            }
+            $results=array(
+                "sEcho"=>1,
+                "iTotalRecords"=>count($data),
+                "iTotalDisplayRecords"=>count($data),
+                "aaData"=>$data);
+            echo json_encode($results);
         break;
         case "mostrar_cursos_detalle":
             $datos=$usuario->get_cursos_x_id_detalle($_POST["curusu_id"]);
@@ -44,5 +44,33 @@
                 echo json_encode($output);
             }
         break;
+        case "total":
+            $datos=$usuario->get_total_cursos_x_usuario($_POST["usu_id"]);
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row){
+                    $output["total"] = $row["total"];
+                }
+                echo json_encode($output);
+            }
+        break;
+        case "listar__cursos_top10":
+            $datos=$usuario->get_cursos_x_usuario_top10($_POST["usu_id"]);
+            $data= Array();
+            foreach($datos as $row){
+                $sub_array = array();
+                $sub_array[] = $row["cur_nom"];
+                $sub_array[] = $row["fech_ini"];
+                $sub_array[] = $row["fech_fin"];
+                $sub_array[] = $row["inst_nom"]." ".$row["inst_apep"];
+                $sub_array[] = '<button type="button" onClick="certificado('.$row["curusu_id"].');" id="'.$row["curusu_id"].'" class="btn btn-outline-primary btn-icon"><i  style="margin:3px" class="fa fa-id-card-o"></i></button>';
+                $data[]=$sub_array;
+            }
+            $results=array(
+                "sEcho"=>1,
+                "iTotalRecords"=>count($data),
+                "iTotalDisplayRecords"=>count($data),
+                "aaData"=>$data);
+            echo json_encode($results);
+        break;    
     }
 ?>

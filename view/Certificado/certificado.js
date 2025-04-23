@@ -1,21 +1,48 @@
  const canvas= document.getElementById('canvas');
  const ctx= canvas.getContext('2d');
- const img= new Image();
-    img.src= '../../public/img/certificado.png'; 
-        ctx.drawImage(img,0,0,canvas.width,canvas.height);
-        ctx.font= 'bold 30px Arial';
-        ctx.fillStyle= '#000000';
-        ctx.textAlign= 'center';
-        ctx.fillText('Nombre del Estudiante', canvas.width/2, 200);
-        ctx.fillText('Curso de Programación', canvas.width/2, 300);
-        ctx.fillText('Fecha de Finalización', canvas.width/2, 400);
+ const image= new Image();
+    image.src= '../../public/certificado5.png'; 
  $(document).ready(function(){
     var curusu_id = getUrlParameter('curusu_id');
-
     $.post("../../controller/usuario.php?op=mostrar_cursos_detalle", { curusu_id: curusu_id }, function (data) {
-        console.log(data);
+        data = JSON.parse(data);
+        $('#cur_des').html(data.cur_des);
+            ctx.drawImage(image,0,0,canvas.width,canvas.height);
+            ctx.textAlign= 'center';
+            ctx.textBaseline= 'middle';
+            var x = canvas.width/2;
+            ctx.font= '25px Times New Roman';
+            ctx.fillText(data.usu_nom + ' ' + data.usu_apep + ' ' + data.usu_apem,x,160);
+
+            ctx.font= '27px Times New Roman';
+            ctx.fillText(data.cur_nom ,x,200);
+
+            ctx.font= '18px Times New Roman';
+            ctx.fillText(data.inst_nom + ' ' + data.inst_apep + ' ' + data.inst_apem,x,250);
+
+            ctx.font= '12px Times New Roman';  
+            ctx.fillText("Fecha Inicio:"+ ' '+ data.fech_ini+ '                '+ "Fecha Fin"+ ' ' + data.fech_fin,x,300);
     });
 });
+ $(document).on("click","#btnpng",function(){
+    let lblng= document.createElement('a');
+    lblng.download= 'certificado.png';
+    lblng.href= canvas.toDataURL('image/png',1.0);
+    lblng.click();
+ });
+
+ $(document).on("click","#btnpdf",function(){
+    var imgData= canvas.toDataURL('image/png');
+    var doc= new jsPDF('l','mm');
+    doc.addImage( imgData,'PNG',30,15);
+    doc.save('certificado.pdf');
+ });
+
+
+
+
+
+
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
