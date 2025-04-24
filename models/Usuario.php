@@ -21,6 +21,7 @@
                         $_SESSION["usu_nom"] = $resultado["usu_nom"];
                         $_SESSION["usu_ape"] = $resultado["usu_ape"];
                         $_SESSION["usu_corr"] = $resultado["usu_corr"];
+                        $_SESSION["rol_id"] = $resultado["rol_id"];
                         header("Location:".conectar::ruta()."view/UsuHome/");
                         exit();
                     } else {
@@ -95,7 +96,7 @@
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$usu_id);
             $sql->execute();
-            return $resultado=$sql->fetchAll(); 
+        return $resultado=$sql->fetchAll(); 
        }
        public  function get_cursos_x_usuario_top10($usu_id){
         $conectar = parent::conexion(); 
@@ -135,7 +136,7 @@
              $sql=$conectar->prepare($sql);
              $sql->bindValue(1, $usu_id);
              $sql->execute();
-             return $resultado=$sql->fetchAll();
+        return $resultado=$sql->fetchAll();
        }
         /* Actualizar datos del  usuario */
        public  function update_usuario_perfil($usu_id,$usu_nom,$usu_apep,$usu_apem,$usu_pass,$usu_sex,$telefono){
@@ -152,13 +153,13 @@
                WHERE
                 usu_id=?";     
              $sql=$conectar->prepare($sql);
-             $sql->bindValue(1, $usu_id);
-             $sql->bindValue(2, $usu_nom);
-             $sql->bindValue(3, $usu_apep);
-             $sql->bindValue(4, $usu_apem);
-             $sql->bindValue(5, $usu_pass);
-             $sql->bindValue(6, $usu_sex);
-             $sql->bindValue(7, $telefono);
+             $sql->bindValue(1, $usu_nom);
+             $sql->bindValue(2, $usu_apep);
+             $sql->bindValue(3, $usu_apem);
+             $sql->bindValue(4, $usu_pass);
+             $sql->bindValue(5, $usu_sex);
+             $sql->bindValue(6, $telefono);
+             $sql->bindValue(7, $usu_id);
              $sql->execute();
              return $resultado=$sql->fetchAll();
        }

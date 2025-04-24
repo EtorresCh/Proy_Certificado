@@ -26,3 +26,4 @@
     <link href="../../public/lib/select2/css/select2.min.css" rel="stylesheet">
     <link href="../../public/css/bracket.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    

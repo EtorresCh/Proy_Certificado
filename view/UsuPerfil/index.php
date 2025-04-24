@@ -24,7 +24,7 @@
       <div class="br-pagebody">
         <div class="br-section-wrapper">
           <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Perfil</h6>
-          <p class="mg-b-30 tx-gray-600">Actualize suss datos.</p>
+          <p class="mg-b-30 tx-gray-600">Actualize sus datos.</p>
           <div class="form-layout form-layout-1">
             <div class="row mg-b-25">
               <div class="col-lg-4">

@@ -12,9 +12,7 @@ $(document).ready(function(){
     });
 });
 $(document).on("click","#btnactualizar",function(){
-    console.log("actualizando datos de usuario");
-    console.log(usu_id);
-    $.post("../../controller/usuario.php?op=update_perfil",{
+    $.post("../../controller/usuario.php?op=update_perfil", {
         usu_id : usu_id,
         usu_nom : $('#usu_nom').val(),
         usu_apep : $('#usu_apep').val(),
@@ -47,3 +45,4 @@ $(document).on("click","#btnactualizar",function(){
       });
       
     });
+    
