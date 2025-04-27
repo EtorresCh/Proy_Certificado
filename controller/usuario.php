@@ -90,7 +90,7 @@ switch ($_GET["op"]) {
             echo json_encode($output);
         }
         break;
-        case "update_perfil":
+    case "update_perfil":
            $usuario->update_usuario_perfil(
                 $_POST["usu_id"],
                 $_POST["usu_nom"],
