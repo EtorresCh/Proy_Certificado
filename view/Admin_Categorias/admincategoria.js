@@ -7,7 +7,6 @@ function init(){
 function guardaryeditar() {
     var formData = new FormData($("#categoria_form")[0]);  
     console.log(formData);  
-
     $.ajax({
         url: "../../controller/categoria.php?op=guardaryeditar", 
         type: "POST",
@@ -15,14 +14,17 @@ function guardaryeditar() {
         contentType: false,
         processData: false,
         success: function(data) {
-            console.log("Datos guardados o editados con éxito");
             $('#categoria_data').DataTable().ajax.reload();
             $('#modalCategoria').modal('hide');
+            Swal.fire({
+                title: "Correcto!",
+                text: "La categoria se guardo correctamente!",
+                icon: "success"
+              });
         }
     });
 }   
 $(document).ready(function(){
-
     $('#categoria_data').DataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -68,20 +70,19 @@ $(document).ready(function(){
 	});   
 });  
 function editar(cat_id) {
-    console.log("Editar categoría con ID:", cat_id);
     $('#modalCategoria').modal('show');
     $('#cat_id').val(cat_id);
     $.ajax({
-        url: '../../controller/categoria.php?op=mostrar', 
+        url: '../../controller/categoria.php?op=mostrar',
         type: 'POST',
         data: { cat_id: cat_id },
         dataType: 'json',
         success: function(data) {
             $('#cat_nom').val(data.cat_nom);
+            $('#modalCategoria').modal('hide');
         }
     });
 }
-
 
 function eliminar(cat_id) {
     console.log("Eliminar categoría con ID:", cat_id);
@@ -91,3 +92,4 @@ function nuevo(){
     $('#categoria_form')[0].reset();
     $('#modalCategoria').modal('show');
 }
+init();

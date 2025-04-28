@@ -14,8 +14,14 @@ function guardaryeditar(e){
         contentType: false,
         processData: false,
         success: function(data){
-            console.log("test");
+            console.log(data);
             $('#instructor_data').DataTable().ajax.reload();
+            $('#modalInstructor').modal('hide');
+            Swal.fire({
+                title: "Correcto!",
+                text: "El instructor se guardo correctamente!",
+                icon: "success"
+              });
         }
     });
 }    
@@ -71,12 +77,31 @@ $(document).ready(function(){
 		},
 	});   
 });  
-function  editar(){
-    console.log("editar");
+function  editar(inst_id){
+    $('#modalInstructor').modal('show');
+    $('#inst_id').val(inst_id);
+    $.ajax({
+        url: '../../controller/instructor.php?op=mostrar',
+        type: 'POST',
+        data: {inst_id:inst_id },
+        dataType: 'json',
+        success: function(data) {
+            $('#inst_nom').val(data.inst_nom);
+            $('#inst_apep').val(data.inst_apep);
+            $('#inst_apem').val(data.inst_apem);
+            $('#inst_sex').val(data.inst_sex).trigger('change');
+            $('#inst_telf').val(data.inst_telf);
+            $('#inst_correo').val(data.inst_correo);
+            $('#modalInstructor').modal('show');
+        }
+    });
 }
-function eliminar(cat_id){
+function eliminar(inst_id){
+    console.log("eliminar");
 }
+
 function nuevo(){
     $('#instructor_form')[0].reset();
     $('#modalInstructor').modal('show');
 }
+init();

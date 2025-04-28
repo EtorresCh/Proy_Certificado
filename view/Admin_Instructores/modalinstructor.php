@@ -4,7 +4,7 @@
             <div class="modal-header pd-y pd-x-25">
                 <h6 class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold">Nuevo Registro</h6>
             </div>
-            <form id="instructor_form" method="post">
+            <form method="post" id="instructor_form">
                 <div class="modal-body pd-25">
                     <input type="hidden" name="cur_id" id="cur_id">
                     <div class="row">

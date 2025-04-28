@@ -4,38 +4,38 @@ require_once '../models/Instructor.php';
 $instructor = new Instructor(); 
     switch($_GET["op"]){
     case "guardaryeditar":
-            if(empty($_POST["cur_id"])){
-            $curso->insert_curso(
-                $_POST["cat_id"],
-                $_POST["cur_nom"],
-                $_POST["cur_desc"],
-                $_POST["fech_ini"],
-                $_POST["fech_fin"],
-                $_POST["inst_id"]
+            if(empty($_POST["inst_id"])){
+            $instructor->insert_instructor(
+                $_POST["inst_nom"],
+                $_POST["inst_apep"],
+                $_POST["inst_apem"],
+                $_POST["inst_sex"],
+                $_POST["inst_telf"],
+                $_POST["inst_correo"]
             );
             }else{
-                $curso->update_curso(
-                    $_POST["cur_id"],
-                    $_POST["cat_id"],
-                    $_POST["cur_nom"],
-                    $_POST["cur_desc"],
-                    $_POST["fech_ini"],
-                    $_POST["fech_fin"],
-                    $_POST["inst_id"]
+                $instructor->update_instructor(
+                    $_POST["inst_id"],
+                    $_POST["inst_nom"],
+                    $_POST["inst_apep"],
+                    $_POST["inst_apem"],
+                    $_POST["inst_sex"],
+                    $_POST["inst_telf"],
+                    $_POST["inst_correo"]
                 );
             }              
         break;
     case "mostrar":
-        $datos = $curso->get_curso_id($_POST["cur_id"]);
+        $datos = $instructor->get_instructor_id($_POST["inst_id"]);
         if (is_array($datos) == true and count($datos) > 0) {
             foreach ($datos as $row) {
-                $output["cur_id"] = $row["cur_id"];
-                $output["cat_id"] = $row["cat_id"];
-                $output["cur_nom"] = $row["cur_nom"];
-                $output["cur_des"] = $row["cur_des"];
-                $output["fech_ini"] = $row["fech_ini"];
-                $output["fech_fin"] = $row["fech_fin"];
-                $output["inst_id"] = $row["inst_id"]; 
+                $output["inst_id"] = $row["inst_id"];
+                $output["inst_nom"] = $row["inst_nom"];
+                $output["inst_apep"] = $row["inst_apep"];
+                $output["inst_apem"] = $row["inst_apem"];
+                $output["inst_sex"] = $row["inst_sex"];
+                $output["inst_telf"] = $row["inst_telf"]; 
+                $output["inst_correo"] = $row["inst_correo"]; 
             }
             echo json_encode($output);
         }
@@ -53,6 +53,8 @@ $instructor = new Instructor();
             echo $html;
         }
         break;
+
+     /*Lista la tabla con los botones*/
     case "listar":
         $datos = $instructor->get_instructor();
         $data= Array();

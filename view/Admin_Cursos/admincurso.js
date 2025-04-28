@@ -8,14 +8,19 @@ function guardaryeditar(e){
     e.preventDefault(); 
     var formData = new FormData($("#cursos_form")[0]);  
     $.ajax({
-        url: "../../controller/curso.php?op=guardaryeditar",
+        url:'../../controller/curso.php?op=guardaryeditar',
         type: "POST",
         data: formData,
         contentType: false,
         processData: false,
         success: function(data){
-            console.log("test");
             $('#cursos_data').DataTable().ajax.reload();
+            $('#modalMantenimiento').modal('hide');
+            Swal.fire({
+                title: "Correcto!",
+                text: "El curso se guardo correctamente!",
+                icon: "success"
+              });
         }
     });
 }    
@@ -77,12 +82,55 @@ $(document).ready(function(){
 		},
 	});   
 });  
-function  editar(){
-    console.log("editar");
+function editar(cur_id) {
+    $('#modalMantenimiento').modal('show');
+    $('#cur_id').val(cur_id);
+    $.ajax({
+        url: '../../controller/curso.php?op=mostrar',
+        type: 'POST',
+        data: { cur_id: cur_id },
+        dataType: 'json',
+        success: function(data) {
+            $('#cat_id').val(data.cat_id).trigger('change');
+            $('#cur_nom').val(data.cur_nom);
+            $('#cur_des').val(data.cur_des);
+            $('#fech_ini').val(data.fech_ini);
+            $('#fech_fin').val(data.fech_fin);
+            $('#inst_id').val(data.inst_id).trigger('change');
+            $('#modalMantenimiento').modal('hide');
+        }
+    });
 }
-function eliminar(cat_id){
+
+function eliminar(cur_id) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡Esta acción no se puede deshacer!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminarlo'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '../../controller/curso.php?op=eliminar',
+                type: 'POST',
+                data: { cur_id: cur_id },
+                success: function(response) {
+                    Swal.fire(
+                        '¡Eliminado!',
+                        'El curso ha sido eliminado.',
+                        'success'
+                    );
+                }
+            });
+        }
+    });
 }
+
 function nuevo(){
     $('#cursos_form')[0].reset();
     $('#modalMantenimiento').modal('show');
 }
+init();

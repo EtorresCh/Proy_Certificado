@@ -4,7 +4,7 @@
             <div class="modal-header pd-y pd-x-25">
                 <h6 class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold">Nuevo Registro</h6>
             </div>
-            <form id="cursos_form" method="post">
+            <form method="post" id="cursos_form">
                 <div class="modal-body pd-25">
                     <input type="hidden" name="cur_id" id="cur_id">
                     <div class="row">
@@ -57,12 +57,8 @@
                     </div>       
                 </div>
                 <div class="modal-footer"> 
-                    <button type="submit" name="action" value="add" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-medium">
-                        <i class="fa fa-check"></i> Guardar
-                    </button>
-                    <button type="reset" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-medium" aria-label="close" aria-hidden="true" data-dismiss="modal">
-                        <i class="fa fa-close"></i> Cancelar
-                    </button>
+                    <button type="submit" name="action" value="add" class="btn btn-primary tx-13 tx-uppercase pd-y-12 pd-x-25 tx-medium"><i class="fa fa-check"></i> Guardar</button>
+                    <button type="reset" class="btn btn-secondary tx-13 tx-uppercase pd-y-12 pd-x-25 tx-medium" aria-label="close" aria-hidden="true" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
                 </div> 
             </form>    
         </div>

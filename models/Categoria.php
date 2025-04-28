@@ -29,26 +29,26 @@
         $sql->execute();
         return $resultado = $sql->fetchAll();
     }
-    public function delete_categoria($cur_id){
+    public function delete_categoria($cat_id){
         $conectar = parent::conexion(); 
         parent::set_names();
-        $sql="UPDATE curso
+        $sql="UPDATE categoria
             SET 
                 estado=1
             WHERE
-             cur_id=?";
+             cat_id=?";
         $sql=$conectar->prepare($sql);
-        $sql->bindValue(1,$cur_id);
+        $sql->bindValue(1,$cat_id);
         $sql->execute();
         return $resultado=$sql->fetchAll();
       
     }
-    public function get_categoria_id($cur_id){
+    public function get_categoria_id($cat_id){
         $conectar = parent::conexion(); 
         parent::set_names();
-        $sql="SELECT * FROM curso WHERE estado = 1 and cur_id=?";
+        $sql="SELECT * FROM categoria WHERE estado = 1 and cat_id=?";
         $sql=$conectar->prepare($sql);
-        $sql->bindValue(1,$cur_id);
+        $sql->bindValue(1,$cat_id);
         $sql->execute();
         return $resultado=$sql->fetchAll();    
     }
