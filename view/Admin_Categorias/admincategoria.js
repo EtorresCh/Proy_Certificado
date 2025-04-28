@@ -1,33 +1,29 @@
 var usu_id = $('#usu_idx').val();
 function init(){
-    $("#instructor_form").on("submit",function(e){
+    $("#categoria_form").on("submit",function(e){
         guardaryeditar(e);
     });
 }
-function guardaryeditar(e){
-    e.preventDefault(); 
-    var formData = new FormData($("#instructor_form")[0]);  
+function guardaryeditar() {
+    var formData = new FormData($("#categoria_form")[0]);  
+    console.log(formData);  
+
     $.ajax({
-        url: "../../controller/instructor.php?op=guardaryeditar",
+        url: "../../controller/categoria.php?op=guardaryeditar", 
         type: "POST",
         data: formData,
         contentType: false,
         processData: false,
-        success: function(data){
-            console.log("test");
-            $('#instructor_data').DataTable().ajax.reload();
+        success: function(data) {
+            console.log("Datos guardados o editados con éxito");
+            $('#categoria_data').DataTable().ajax.reload();
+            $('#modalCategoria').modal('hide');
         }
     });
-}    
+}   
 $(document).ready(function(){
-    $('#inst_id').select2({
-        dropdownParent: $('#modalInstructor')
-    });
-    $.post("../../controller/instructor.php?op=combo_sex", function(data){
-      $('#inst_id').html(data);
-    });
-    
-    $('#instructor_data').DataTable({
+
+    $('#categoria_data').DataTable({
         "aProcessing": true,
         "aServerSide": true,
         dom: 'Bfrtip',
@@ -37,7 +33,7 @@ $(document).ready(function(){
             'csvHtml5',
         ],
         "ajax":{
-            url: "../../controller/instructor.php?op=listar",
+            url: "../../controller/categoria.php?op=listar",
             type :"post"
         },
 		"bDestroy": true,
@@ -71,12 +67,27 @@ $(document).ready(function(){
 		},
 	});   
 });  
-function  editar(){
-    console.log("editar");
+function editar(cat_id) {
+    console.log("Editar categoría con ID:", cat_id);
+    $('#modalCategoria').modal('show');
+    $('#cat_id').val(cat_id);
+    $.ajax({
+        url: '../../controller/categoria.php?op=mostrar', 
+        type: 'POST',
+        data: { cat_id: cat_id },
+        dataType: 'json',
+        success: function(data) {
+            $('#cat_nom').val(data.cat_nom);
+        }
+    });
 }
-function eliminar(cat_id){
+
+
+function eliminar(cat_id) {
+    console.log("Eliminar categoría con ID:", cat_id);
 }
+
 function nuevo(){
-    $('#instructor_form')[0].reset();
-    $('#modalInstructor').modal('show');
+    $('#categoria_form')[0].reset();
+    $('#modalCategoria').modal('show');
 }

@@ -1,20 +1,20 @@
 <?php
     class Curso extends Conectar {
-        public function insert_curso($cat_id,$cur_nom,$cur_desc,$fech_ini,$fech_fin,$inst_id){
+        public function insert_curso($cat_id,$cur_nom,$cur_des,$fech_ini,$fech_fin,$inst_id){
             $conectar = parent::conexion(); 
             parent::set_names();
             $sql="INSERT INTO  curso (cur_id, cat_id, cur_nom, cur_des, fech_ini, fech_fin, inst_id, fech_crea, est) VALUES (null,?,?,?,?,?,?,now(),'1');";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$cat_id);
             $sql->bindValue(2,$cur_nom);
-            $sql->bindValue(3,$cur_desc);
+            $sql->bindValue(3,$cur_des);
             $sql->bindValue(4,$fech_ini);
             $sql->bindValue(5,$fech_fin);
             $sql->bindValue(6,$inst_id);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
-        public function update_curso($cur_id,$cat_id,$cur_nom,$cur_desc,$fech_ini,$fech_fin,$inst_id){
+        public function update_curso($cur_id,$cat_id,$cur_nom,$cur_des,$fech_ini,$fech_fin,$inst_id){
             $conectar = parent::conexion(); 
             parent::set_names();
             $sql=" UPDATE curso

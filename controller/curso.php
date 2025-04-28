@@ -8,7 +8,7 @@
             $curso->insert_curso(
                 $_POST["cat_id"],
                 $_POST["cur_nom"],
-                $_POST["cur_desc"],
+                $_POST["cur_des"],
                 $_POST["fech_ini"],
                 $_POST["fech_fin"],
                 $_POST["inst_id"]
@@ -18,7 +18,7 @@
                     $_POST["cur_id"],
                     $_POST["cat_id"],
                     $_POST["cur_nom"],
-                    $_POST["cur_desc"],
+                    $_POST["cur_des"],
                     $_POST["fech_ini"],
                     $_POST["fech_fin"],
                     $_POST["inst_id"]

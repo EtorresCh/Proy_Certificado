@@ -1,30 +1,15 @@
 <?php
-require_once '../conf/conexion.php';
-require_once '../models/Categoria.php';
+ require_once("../conf/conexion.php");
+ require_once("../models/Categoria.php");
 $categoria = new Categoria(); 
     switch($_GET["op"]){
-    case "guardaryeditar":
-            if(empty($_POST["cur_id"])){
-            $curso->insert_curso(
-                $_POST["cat_id"],
-                $_POST["cur_nom"],
-                $_POST["cur_desc"],
-                $_POST["fech_ini"],
-                $_POST["fech_fin"],
-                $_POST["inst_id"]
-            );
-            }else{
-                $curso->update_curso(
-                    $_POST["cur_id"],
-                    $_POST["cat_id"],
-                    $_POST["cur_nom"],
-                    $_POST["cur_desc"],
-                    $_POST["fech_ini"],
-                    $_POST["fech_fin"],
-                    $_POST["inst_id"]
-                );
-            }              
-        break;
+        case "guardaryeditar":
+            if (empty($_POST["cat_id"])) {
+                $categoria->insert_categoria($_POST["cat_nom"]);
+            } else {
+                $categoria->update_categoria($_POST["cat_id"], $_POST["cat_nom"]);
+            }
+            break;
     case "mostrar":
         $datos = $curso->get_curso_id($_POST["cur_id"]);
         if (is_array($datos) == true and count($datos) > 0) {
@@ -43,7 +28,24 @@ $categoria = new Categoria();
     case "eliminar":
         $curso->delete_curso($_POST["cur_id"]);
         break;
-    case "combo":
+    case "listar":
+        $datos = $categoria->get_categoria();
+        $data= Array();
+        foreach($datos as $row) {
+            $sub_array = array();
+            $sub_array[] = $row["cat_nom"];
+            $sub_array[] = '<button type="button" onClick="editar(' . $row["cat_id"] . ');" id="' . $row["cat_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button>';
+            $sub_array[] = '<button type="button" onClick="eliminar(' . $row["cat_id"] . ');" id="' . $row["cat_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-close"></i></button>';
+            $data[] = $sub_array;
+            }
+            $result = array(
+            "sEcho"=>1,
+            "iTotalRecords"=>count($data),
+            "iTotalDisplayRecords"=>count($data),
+            "aaData"=>$data);
+        echo json_encode($result);  
+        break;  
+        case "combo":
         $datos = $categoria->get_categoria();
         if(is_array($datos)==true and count ($datos)>0){
             $html="<option value=''>Seleccionar</option>";

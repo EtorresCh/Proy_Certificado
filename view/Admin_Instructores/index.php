@@ -6,7 +6,7 @@
 <html lang="es">
   <head>
     <?php require_once '../html/MainHead.php';?>
-    <title>Empresa: Mant. Instructor</title>
+    <title>Empresa: Mant. Cursos</title>
   </head>
   <body>
      <?php require_once '../html/MainMenu.php';?>
@@ -18,24 +18,24 @@
         </nav>
       </div>
       <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-        <h4 class="tx-gray-800 mg-b-5">Intructores</h4>
+        <h4 class="tx-gray-800 mg-b-5">Instructor</h4>
         <p class="mg-b-0">Mantenimiento</p>
       </div>
       <div class="br-pagebody">
         <div class="br-section-wrapper">
-          <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Instructores</h6>
+          <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Instructor</h6>
           <p class="mg-b-30 tx-gray-600">Listado de Instructores.</p>
-          <button class="btn btn-success mg-b-10" id="add_button" type="button" onclick="nuevoi()"><i class="fa fa-plus"></i> Nuevo Registro</button>
+          <button class="btn btn-success mg-b-10" id="add_button" type="button" onclick="nuevo()"><i class="fa fa-plus"></i> Nuevo Registro</button>
             <div class="table-wrapper">
               <table id="instructor_data" class="table display  responsive nowrap">
                 <thead>
                   <tr>
-                    <th class="wd-15p">Nombre</th>
-                    <th class="wd-15p">Ap. Paterno</th>
-                    <th class="wd-15p">Ap. Materno</th>
+                    <th class="wd-15p">Nombres</th>
+                    <th class="wd-15p">Ape. Paterno</th>
+                    <th class="wd-15p">Ape. Materno</th>
                     <th class="wd-15p">Sexo</th>
                     <th class="wd-15p">Telefono</th>
-                    <th class="wd-15p">Correo</th>
+                    <th class="wd-15p">correo</th>
                     <th class="wd-5p"></th>
                     <th class="wd-5p"></th>
                   </tr>

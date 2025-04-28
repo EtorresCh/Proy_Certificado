@@ -43,7 +43,7 @@ $instructor = new Instructor();
     case "eliminar":
         $curso->delete_curso($_POST["cur_id"]);
         break;
-    case "combo":
+    case "combo":  
         $datos = $instructor->get_instructor();
         if(is_array($datos)==true and count ($datos)>0){
             $html="<option value=''>Seleccionar</option>";
@@ -53,5 +53,41 @@ $instructor = new Instructor();
             echo $html;
         }
         break;
-    }
+    case "listar":
+        $datos = $instructor->get_instructor();
+        $data= Array();
+        foreach($datos as $row) {
+            $sub_array = array();
+            $sub_array[] = $row["inst_nom"];
+            $sub_array[] = $row["inst_apep"];
+            $sub_array[] = $row["inst_apem"];
+            $sub_array[] = $row["inst_sex"];
+            $sub_array[] = $row["inst_telf"];
+            $sub_array[] = $row["inst_correo"];
+            $sub_array[] = '<button type="button" onClick="editar(' . $row["inst_id"] . ');" id="' . $row["inst_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button>';
+            $sub_array[] = '<button type="button" onClick="eliminar(' . $row["inst_id"] . ');" id="' . $row["inst_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-close"></i></button>';
+            $data[] = $sub_array;
+            }
+            $result = array(
+            "sEcho"=>1,
+            "iTotalRecords"=>count($data),
+            "iTotalDisplayRecords"=>count($data),
+            "aaData"=>$data);
+        echo json_encode($result);  
+        break;   
+    case "combo_sex":  
+        $datos = $instructor->get_instructor();
+        if(is_array($datos)==true and count ($datos)>0){
+            $html="<option value=''>Seleccionar</option>";
+                foreach($datos as $row){
+                    $html.="<option value='".$row["inst_id"]."'>".$row["inst_sex"]."</option>";
+                }
+            echo $html;
+        }
+        break;  
+        
+     }
+
+
+
 ?>

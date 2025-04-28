@@ -13442,7 +13442,7 @@ textarea.parsley-success:focus {
 }
 .br-menu-link:hover, .br-menu-link:focus {
   color: #fff;
-  background-color: #18222f;
+  background-color: #24b1a1 !important;
 }
 .br-menu-link:focus, .br-menu-link:active {
   outline: none;

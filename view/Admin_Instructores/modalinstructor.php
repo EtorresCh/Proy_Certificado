@@ -1,57 +1,55 @@
-<div id="modalinstructor" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalinstructorLabel" aria-hidden="true">
+<div id="modalInstructor" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalInstructorLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document"> <!-- Cambiado a modal-xl -->
         <div class="modal-content bd-0">
             <div class="modal-header pd-y pd-x-25">
                 <h6 class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold">Nuevo Registro</h6>
             </div>
-            <form id="cursos_form" method="post">
+            <form id="instructor_form" method="post">
                 <div class="modal-body pd-25">
                     <input type="hidden" name="cur_id" id="cur_id">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-control-label">Categoria:<span class="tx-danger"> *</span></label>
-                                <select class="form-control select2" style="width:100%" data-placeholder="Seleccione" name="cat_id" id="cat_id">
-                                    <option label="Seleccione"></option>
-                                </select>
+                                <label class="form-control-label">Nombres:<span class="tx-danger"> *</span></label>
+                                <input class="form-control tx-uppercase" id="inst_nom" type="text" name="inst_nom" required>
                             </div>
-                        </div>
-                        <div class="col-md-6">    
-                            <div class="form-group">
-                                <label class="form-control-label">Nombre:<span class="tx-danger"> *</span></label>
-                                <input class="form-control tx-uppercase" id="cur_nom" type="text" name="cur_nom" required>
-                            </div>    
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">    
-                            <div class="form-group">
-                                <label class="form-control-label">Descripcion:<span class="tx-danger"> *</span></label>
-                                <input class="form-control tx-uppercase" id="cur_des" type="text" name="cur_des" required>
-                            </div>    
                         </div>
                     </div>
                     <div class="row">    
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-control-label">Fecha Inicio:<span class="tx-danger"> *</span></label>
-                                <input class="form-control tx-uppercase" id="fech_ini" type="date" name="fech_ini" required>
-                            </div> 
-                        </div>    
                         <div class="col-md-6">    
                             <div class="form-group">
-                                <label class="form-control-label">Fecha Final:<span class="tx-danger"> *</span></label>
-                                <input class="form-control tx-uppercase" id="fech_fin" type="date" name="fech_fin" required>
+                                <label class="form-control-label">Apellido Paterno:<span class="tx-danger"> *</span></label>
+                                <input class="form-control tx-uppercase" id="inst_apep" type="text" name="inst_apep" required>
+                            </div>    
+                        </div>
+                        <div class="col-md-6">    
+                            <div class="form-group">
+                                <label class="form-control-label">Apellido Materno:<span class="tx-danger"> *</span></label>
+                                <input class="form-control tx-uppercase" id="inst_apem" type="text" name="inst_apem" required>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="row">  
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Sexo:<span class="tx-danger"> *</span></label>
+                                <select class="form-control select2" style="width:100%" data-placeholder="Seleccione" name="inst_id" id="inst_id">
+                                    <option label="Seleccione"></option>
+                                </select>
+                            </div> 
+                        </div>          
+                        <div class="col-md-6">    
+                            <div class="form-group">
+                                <label class="form-control-label">Telefono:<span class="tx-danger"> *</span></label>
+                                <input class="form-control tx-uppercase" id="inst_telf" type="number" name="inst_telf" required>
                             </div>    
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">    
                             <div class="form-group">
-                                <label class="form-control-label">Instructor:<span class="tx-danger"> *</span></label>
-                                <select class="form-control select2" style="width:100%" data-placeholder="Seleccione" name="inst_id" id="inst_id">
-                                    <option label="Seleccione"></option>
-                                </select>
+                                <label class="form-control-label">Correo:<span class="tx-danger"> *</span></label>
+                                <input class="form-control tx-uppercase" id="inst_correo" type="email" name="inst_correo" required>
                             </div>    
                         </div>
                     </div>       

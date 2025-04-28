@@ -26,56 +26,65 @@
           <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Perfil</h6>
           <p class="mg-b-30 tx-gray-600">Actualize sus datos.</p>
           <div class="form-layout form-layout-1">
-            <div class="row mg-b-25">
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Nombre: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="usu_nom" id="usu_nom" placeholder="Ingrese Nombre" required>
+            <div class="row">
+              <div class="col-lg-4 d-flex justify-content-center align-items-start">
+                <img src="../../public/foto_perfil.png" alt="Foto Perfil" class="img-thumbnail" style="max-width: 200px;">
+              </div>
+              <div class="col-lg-8">
+                <div class="row mb-3">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Nombre: <span class="tx-danger">*</span></label>
+                      <input class="form-control" type="text" name="usu_nom" id="usu_nom" placeholder="Ingrese Nombre" required>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Apellido Paterno: <span class="tx-danger">*</span></label>
+                      <input class="form-control" type="text" name="usu_apep" id="usu_apep" placeholder="Ingrese Apellido Paterno">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Apellido Materno: <span class="tx-danger">*</span></label>
+                      <input class="form-control" type="text" name="usu_apem" id="usu_apem" placeholder="Ingrese Apellido Materno">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Correo Electrónico: <span class="tx-danger">*</span></label>
+                      <input class="form-control" type="text" name="usu_corr" id="usu_corr" placeholder="Ingrese Correo Electrónico" readonly>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Contraseña: <span class="tx-danger">*</span></label>
+                      <input class="form-control" type="text" name="usu_pass" id="usu_pass" placeholder="Ingrese Contraseña">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Sexo: <span class="tx-danger">*</span></label>
+                      <select class="form-control select2" data-placeholder="Seleccione" name="usu_sex" id="usu_sex">
+                        <option label="Seleccione"></option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Teléfono: <span class="tx-danger">*</span></label>
+                      <input class="form-control" type="number" name="telefono" id="telefono" placeholder="Ingrese Teléfono">
+                    </div>
+                  </div>   
+                  <div class="col-lg-6 d-flex justify-content-center align-items-center ">
+                    <div class="form-group mb-0">
+                      <button class="btn btn-info" id="btnactualizar">Actualizar</button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Apellido Paterno: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="usu_apep"  id="usu_apep"placeholder="Ingrese Apellido Paterno">
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="form-group">
-                  <label class="form-control-label">Apellido Materno: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text"  name="usu_apem" id="usu_apem" placeholder="Ingrese Apellido Materno">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <label class="form-control-label">Correo Electronico: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="usu_corr"  id="usu_corr" placeholder="Ingrese correo Electronico" readonly>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <label class="form-control-label">Contraseña: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" name="usu_pass"  id="usu_pass" placeholder="Ingrese contraseña">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="form-group mg-b-10-force">
-                  <label class="form-control-label">Sexo: <span class="tx-danger">*</span></label>
-                  <select class="form-control select2" data-placeholder="Seleccione" name="usu_sex" id="usu_sex">
-                    <option label="Seleccione"></option>
-                    <option value="M">Masculino </option>
-                    <option value="F">Femenino</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="form-group">
-                  <label class="form-control-label">Telefono: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="number" name="telefono" id="telefono" placeholder="Ingrese telefono">
-                </div>
-              </div>
-            </div>
-            <div class="form-layout-footer">
-              <button class="btn btn-info" id="btnactualizar">Actualizar</button>
             </div>
           </div>
         </div>
