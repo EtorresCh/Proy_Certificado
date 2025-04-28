@@ -27,7 +27,7 @@
                         <div class="col-md-12">    
                             <div class="form-group">
                                 <label class="form-control-label">Descripcion:<span class="tx-danger"> *</span></label>
-                                <textarea class="form-control tx-uppercase" id="cur_des" type="text" name="cur_des" rows="3" style="resize: none;" required></textarea>
+                                <textarea class="form-control tx-uppercase" id="cur_des" type="text" name="cur_des" rows="8" style="resize: none;" required></textarea>
                             </div>    
                         </div>
                     </div>
@@ -54,12 +54,17 @@
                                 </select>
                             </div>    
                         </div>
-                    </div>       
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="submit" name="action" value="add" class="btn btn-primary tx-13 tx-uppercase pd-y-12 pd-x-25 tx-medium"><i class="fa fa-check"></i> Guardar</button>
+                                <button type="reset" class="btn btn-secondary tx-13 tx-uppercase pd-y-12 pd-x-25 tx-medium" aria-label="close" aria-hidden="true" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
+                            </div>    
+                        </div>
+                    </div>          
                 </div>
-                <div class="modal-footer"> 
-                    <button type="submit" name="action" value="add" class="btn btn-primary tx-13 tx-uppercase pd-y-12 pd-x-25 tx-medium"><i class="fa fa-check"></i> Guardar</button>
-                    <button type="reset" class="btn btn-secondary tx-13 tx-uppercase pd-y-12 pd-x-25 tx-medium" aria-label="close" aria-hidden="true" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
-                </div> 
+            
             </form>    
         </div>
     </div>               

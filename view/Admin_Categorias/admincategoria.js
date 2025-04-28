@@ -96,7 +96,7 @@ function eliminar(cat_id) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: '../../controller/curso.php?op=eliminar',
+                url: '../../controller/categoria.php?op=eliminar',
                 type: 'POST',
                 data: { cat_id: cat_id },
                 success: function(response) {
