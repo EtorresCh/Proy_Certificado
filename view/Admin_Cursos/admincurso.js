@@ -28,15 +28,11 @@ $(document).ready(function(){
     $('#cat_id').select2({
         dropdownParent: $('#modalMantenimiento')
     });
-    $.post("../../controller/categoria.php?op=combo", function(data){
-      $('#cat_id').html(data);
-    });
     $('#inst_id').select2({
         dropdownParent: $('#modalMantenimiento')
     });
-    $.post("../../controller/instructor.php?op=combo", function(data){
-      $('#inst_id').html(data);
-    });
+    combo_categoria();
+    combo_instructor();
     
     $('#cursos_data').DataTable({
         "aProcessing": true,
@@ -118,6 +114,7 @@ function eliminar(cur_id) {
                 type: 'POST',
                 data: { cur_id: cur_id },
                 success: function(response) {
+                    $('#cursos_data').DataTable().ajax.reload();
                     Swal.fire(
                         '¡Eliminado!',
                         'El curso ha sido eliminado.',
@@ -130,7 +127,20 @@ function eliminar(cur_id) {
 }
 
 function nuevo(){
+    $('#lbltitulo').html('Nuevo Curso');
     $('#cursos_form')[0].reset();
+    combo_categoria();
+    combo_instructor();
     $('#modalMantenimiento').modal('show');
+}
+function combo_categoria(){
+    $.post("../../controller/categoria.php?op=combo", function(data){
+        $('#cat_id').html(data);
+    });
+}
+function combo_instructor(){
+    $.post("../../controller/instructor.php?op=combo", function(data){
+        $('#inst_id').html(data);
+    });
 }
 init();

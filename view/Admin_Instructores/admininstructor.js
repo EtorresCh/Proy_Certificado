@@ -29,9 +29,7 @@ $(document).ready(function(){
     $('#inst_id').select2({
         dropdownParent: $('#modalInstructor')
     });
-    $.post("../../controller/instructor.php?op=combo_sex", function(data){
-      $('#inst_id').html(data);
-    });
+    combo_sex();
     
     $('#instructor_data').DataTable({
         "aProcessing": true,
@@ -96,11 +94,41 @@ function  editar(inst_id){
         }
     });
 }
-function eliminar(inst_id){
-    console.log("eliminar");
+function eliminar(inst_id) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡Esta acción no se puede deshacer!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminarlo'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '../../controller/instructor.php?op=eliminar',
+                type: 'POST',
+                data: { inst_id: inst_id },
+                success: function(response) {
+                    $('#cursos_data').DataTable().ajax.reload();
+                    Swal.fire(
+                        '¡Eliminado!',
+                        'El instructor ha sido eliminado.',
+                        'success'
+                    );
+                }
+            });
+        }
+    });
 }
 
+function combo_sex(){
+    $.post("../../controller/instructor.php?op=combo_sex", function(data){
+        $('#inst_id').html(data);
+      });
+}
 function nuevo(){
+    $('#lbltitulo').html('Nuevo Instructor');
     $('#instructor_form')[0].reset();
     $('#modalInstructor').modal('show');
 }

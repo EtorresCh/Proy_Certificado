@@ -41,7 +41,7 @@ $instructor = new Instructor();
         }
         break;
     case "eliminar":
-        $curso->delete_curso($_POST["cur_id"]);
+        $instructor->delete_instructor($_POST["inst_id"]);
         break;
     case "combo":  
         $datos = $instructor->get_instructor();

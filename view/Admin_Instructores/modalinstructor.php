@@ -1,8 +1,8 @@
 <div id="modalInstructor" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalInstructorLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document"> <!-- Cambiado a modal-xl -->
+    <div class="modal-dialog modal-lg" role="document"> <!-- Cambiado a modal-xl -->
         <div class="modal-content bd-0">
             <div class="modal-header pd-y pd-x-25">
-                <h6 class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold">Nuevo Registro</h6>
+                <h6 id="lbltitulo"class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold"></h6>
             </div>
             <form method="post" id="instructor_form">
                 <div class="modal-body pd-25">

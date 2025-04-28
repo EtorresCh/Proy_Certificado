@@ -85,11 +85,37 @@ function editar(cat_id) {
 }
 
 function eliminar(cat_id) {
-    console.log("Eliminar categoría con ID:", cat_id);
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡Esta acción no se puede deshacer!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminarlo'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '../../controller/curso.php?op=eliminar',
+                type: 'POST',
+                data: { cat_id: cat_id },
+                success: function(response) {
+                    $('#cursos_data').DataTable().ajax.reload();
+                    Swal.fire(
+                        '¡Eliminado!',
+                        'La categoria ha sido eliminado.',
+                        'success'
+                    );
+                }
+            });
+        }
+    });
 }
 
 function nuevo(){
     $('#categoria_form')[0].reset();
+    combo_categoria();
+    combo_instructor();
     $('#modalCategoria').modal('show');
 }
 init();

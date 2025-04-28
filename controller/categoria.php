@@ -21,7 +21,7 @@ $categoria = new Categoria();
         }
         break;
     case "eliminar":
-        $curso->delete_curso($_POST["cur_id"]);
+        $categoria->delete_categoria($_POST["cat_id"]);
         break;
     case "listar":
         $datos = $categoria->get_categoria();

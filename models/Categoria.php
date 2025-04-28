@@ -34,7 +34,7 @@
         parent::set_names();
         $sql="UPDATE categoria
             SET 
-                estado=1
+                estado=0
             WHERE
              cat_id=?";
         $sql=$conectar->prepare($sql);

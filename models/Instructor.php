@@ -43,7 +43,7 @@
         parent::set_names();
         $sql="UPDATE instructor
             SET 
-                est=1
+                est=0
             WHERE
              inst_id=?";
         $sql=$conectar->prepare($sql);
