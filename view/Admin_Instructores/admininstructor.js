@@ -14,7 +14,6 @@ function guardaryeditar(e){
         contentType: false,
         processData: false,
         success: function(data){
-            console.log(data);
             $('#instructor_data').DataTable().ajax.reload();
             $('#modalInstructor').modal('hide');
             Swal.fire({
@@ -26,11 +25,6 @@ function guardaryeditar(e){
     });
 }    
 $(document).ready(function(){
-    $('#inst_id').select2({
-        dropdownParent: $('#modalInstructor')
-    });
-    combo_sex();
-    
     $('#instructor_data').DataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -110,7 +104,7 @@ function eliminar(inst_id) {
                 type: 'POST',
                 data: { inst_id: inst_id },
                 success: function(response) {
-                    $('#cursos_data').DataTable().ajax.reload();
+                    $('#instructor_data').DataTable().ajax.reload();
                     Swal.fire(
                         '¡Eliminado!',
                         'El instructor ha sido eliminado.',
@@ -122,11 +116,6 @@ function eliminar(inst_id) {
     });
 }
 
-function combo_sex(){
-    $.post("../../controller/instructor.php?op=combo_sex", function(data){
-        $('#inst_id').html(data);
-      });
-}
 function nuevo(){
     $('#lbltitulo').html('Nuevo Instructor');
     $('#instructor_form')[0].reset();

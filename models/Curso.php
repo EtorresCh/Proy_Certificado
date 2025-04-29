@@ -49,8 +49,7 @@
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$cur_id);
             $sql->execute();
-            return $resultado=$sql->fetchAll();
-          
+            return $resultado=$sql->fetchAll();          
         }
         public function get_curso(){
             $conectar = parent::conexion(); 

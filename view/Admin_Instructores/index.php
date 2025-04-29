@@ -6,7 +6,7 @@
 <html lang="es">
   <head>
     <?php require_once '../html/MainHead.php';?>
-    <title>Empresa: Mant. Cursos</title>
+    <title>Empresa: Mant. Instructor</title>
   </head>
   <body>
      <?php require_once '../html/MainMenu.php';?>

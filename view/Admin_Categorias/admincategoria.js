@@ -100,7 +100,7 @@ function eliminar(cat_id) {
                 type: 'POST',
                 data: { cat_id: cat_id },
                 success: function(response) {
-                    $('#cursos_data').DataTable().ajax.reload();
+                    $('#categoria_data').DataTable().ajax.reload();
                     Swal.fire(
                         '¡Eliminado!',
                         'La categoria ha sido eliminado.',
@@ -114,8 +114,6 @@ function eliminar(cat_id) {
 
 function nuevo(){
     $('#categoria_form')[0].reset();
-    combo_categoria();
-    combo_instructor();
     $('#modalCategoria').modal('show');
 }
 init();

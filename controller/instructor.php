@@ -53,8 +53,6 @@ $instructor = new Instructor();
             echo $html;
         }
         break;
-
-     /*Lista la tabla con los botones*/
     case "listar":
         $datos = $instructor->get_instructor();
         $data= Array();
@@ -76,18 +74,7 @@ $instructor = new Instructor();
             "iTotalDisplayRecords"=>count($data),
             "aaData"=>$data);
         echo json_encode($result);  
-        break;   
-    case "combo_sex":  
-        $datos = $instructor->get_instructor();
-        if(is_array($datos)==true and count ($datos)>0){
-            $html="<option value=''>Seleccionar</option>";
-                foreach($datos as $row){
-                    $html.="<option value='".$row["inst_id"]."'>".$row["inst_sex"]."</option>";
-                }
-            echo $html;
-        }
         break;  
-        
      }
 
 

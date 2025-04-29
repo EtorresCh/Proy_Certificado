@@ -3,7 +3,7 @@
      public function insert_categoria($cat_nom){
         $conectar = parent::conexion(); 
         parent::set_names();
-        $sql = "INSERT INTO categoria (cat_id,cat_nom, fech_crea, estado) VALUES (null,?, now(), '1');";
+        $sql = "INSERT INTO categoria (cat_id,cat_nom, fech_crea, estado) VALUES (null,?, now(), 1);";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $cat_nom);
         $sql->execute();

@@ -6,7 +6,7 @@
             </div>
             <form method="post" id="instructor_form">
                 <div class="modal-body pd-25">
-                    <input type="hidden" name="cur_id" id="cur_id">
+                    <input type="hidden" name="inst_id" id="inst_id">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -33,8 +33,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label">Sexo:<span class="tx-danger"> *</span></label>
-                                <select class="form-control select2" style="width:100%" data-placeholder="Seleccione" name="inst_id" id="inst_id">
+                                <select class="form-control " style="width:100%" data-placeholder="Seleccione" name="inst_sex" id="inst_sex" required>
                                     <option label="Seleccione"></option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
                                 </select>
                             </div> 
                         </div>          

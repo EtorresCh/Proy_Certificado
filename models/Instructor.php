@@ -3,13 +3,13 @@
     public function insert_instructor($inst_nom,$inst_apep,$inst_apem,$inst_sex,$inst_telf,$inst_correo){
         $conectar = parent::conexion(); 
         parent::set_names();
-        $sql="INSERT INTO  instructor (inst_id, inst_nom, inst_apep, inst_apem,inst_sex,inst_telf,inst_correo,fech_crea, est) VALUES (null,?,?,?,?,?,?,now(),1);";
+        $sql="INSERT INTO  instructor (inst_id,inst_nom,inst_apep,inst_apem,inst_sex,inst_telf,inst_correo,fech_crea, est) VALUES (null,?,?,?,?,?,?,now(),1);";
         $sql=$conectar->prepare($sql);
         $sql->bindValue(1,$inst_nom);
         $sql->bindValue(2,$inst_apep);
         $sql->bindValue(3,$inst_apem);
         $sql->bindValue(4,$inst_sex);
-        $sql->bindValue(6,$inst_telf);
+        $sql->bindValue(5,$inst_telf);
         $sql->bindValue(6,$inst_correo);
         $sql->execute();
         return $resultado=$sql->fetchAll();

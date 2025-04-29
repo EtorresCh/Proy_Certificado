@@ -163,5 +163,72 @@
              $sql->execute();
              return $resultado=$sql->fetchAll();
        }
+
+
+       public function insert_usuario($usu_nom,$usu_apep,$usu_apem,$usu_correo,$usu_pass,$telefono,$rol_id){
+        $conectar = parent::conexion(); 
+        parent::set_names();
+        $sql = "INSERT INTO usuario (usu_id,usu_nom, usu_apep, usu_apem,usu_correo,usu_pass,fech_crea, est,telefono, rol_id) VALUES (null,?,?,?,?,?,1,now(),?,?)";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $usu_nom);
+        $sql->bindValue(2, $usu_apep);
+        $sql->bindValue(3, $usu_apem);
+        $sql->bindValue(4, $usu_correo);
+        $sql->bindValue(5, $usu_pass);
+        $sql->bindValue(6, $telefono);
+        $sql->bindValue(7, $rol_id);
+        $sql->execute();
+        return $resultado=$sql->fetchAll();
+    }
+    
+    public function update_usuario($usu_id,$usu_nom,$usu_apep,$usu_apem,$usu_correo,$usu_pass,$telefono,$rol_id){
+        $conectar = parent::conexion(); 
+        parent::set_names();
+        $sql = "UPDATE usuario 
+        SET 
+            usu_nom=?
+            usu_apep=?,
+            usu_apem=?,
+            usu_correo=?,
+            usu_pass=?,
+            telefono=?,
+            rol_id=?
+        WHERE usu_id=?";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1, $usu_nom);
+        $sql->bindValue(2, $usu_apep);
+        $sql->bindValue(3, $usu_apem);
+        $sql->bindValue(4, $usu_correo);
+        $sql->bindValue(5, $usu_pass);
+        $sql->bindValue(6, $telefono);
+        $sql->bindValue(7, $rol_id);
+        $sql->bindValue(8, $usu_id);
+        $sql->execute();
+        return true; 
+    }
+
+    public function get_usuario(){
+        $conectar = parent::conexion(); 
+        parent::set_names();
+        $sql = "SELECT * FROM usuario WHERE est = 1";
+        $sql = $conectar->prepare($sql);
+        $sql->execute();
+        return $resultado = $sql->fetchAll();
+    }
+    public function delete_usuario($usu_id){
+        $conectar = parent::conexion(); 
+        parent::set_names();
+        $sql="UPDATE usuario
+            SET 
+                est=0
+            WHERE
+             usu_id=?";
+        $sql=$conectar->prepare($sql);
+        $sql->bindValue(1,$usu_id);
+        $sql->execute();
+        return $resultado=$sql->fetchAll();
+      
+    }
+
     }
 ?>
