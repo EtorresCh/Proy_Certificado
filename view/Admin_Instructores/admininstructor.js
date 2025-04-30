@@ -119,7 +119,7 @@ function eliminar(inst_id) {
 
 
 function nuevo(){
-    $('#lbltitulo').html('Nuevo Instructor');
+    $('#lbltitulo').html('Registro Instructor');
     $('#instructor_form')[0].reset();
     $('#modalInstructor').modal('show');
 }

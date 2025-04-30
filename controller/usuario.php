@@ -152,6 +152,27 @@ switch ($_GET["op"]) {
             "iTotalDisplayRecords"=>count($data),
             "aaData"=>$data);
         echo json_encode($result);  
-        break;      
+        break;  
+    case "listar_cursos_usuario":
+        $datos = $usuario->get_cursos_usuario_id($_POST["curusu_id"]);
+        $data= Array();
+        foreach($datos as $row) {
+            $sub_array = array();
+            $sub_array[] = $row["cur_nom"];
+            $sub_array[] = $row["usu_nom"]." ".$row["usu_apep"]." ".$row["usu_apem"];
+            $sub_array[] = $row["fech_ini"];
+            $sub_array[] = $row["fech_fin"];
+            $sub_array[] = $row["inst_nom"]." ".$row["inst_apep"];
+            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-warning btn-xs"><i class=" fa fa-id-card-o"></i></button>';
+            $sub_array[] = '<button type="button" onClick="eliminar(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-close"></i></button>';
+            $data[] = $sub_array;
+            }
+            $result = array(
+            "sEcho"=>1,
+            "iTotalRecords"=>count($data),
+            "iTotalDisplayRecords"=>count($data),
+            "aaData"=>$data);
+        echo json_encode($result);  
+        break;     
         
 }

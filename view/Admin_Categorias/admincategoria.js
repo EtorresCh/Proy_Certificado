@@ -1,7 +1,4 @@
 var usu_id = $('#usu_idx').val();
-input.addEventListener('input', function() {
-    this.value = this.value.toUpperCase();
-  });
 function init(){
     $("#categoria_form").on("submit",function(e){
         guardaryeditar(e);
@@ -31,10 +28,22 @@ $(document).ready(function(){
         "aProcessing": true,
         "aServerSide": true,
         dom: 'Bfrtip',
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
+         buttons: [
+            {
+                extend: 'copyHtml5',
+                text: 'Copiar',
+                className: 'btn btn-primary'
+            },
+            {
+                extend: 'excelHtml5',
+                text: 'Exportar Excel',
+                className: "btn btn-success"
+            },
+            {
+                extend: 'csvHtml5',
+                text: 'Exportar CSV',
+                className: 'btn btn-info'
+            }
         ],
         "ajax":{
             url: "../../controller/categoria.php?op=listar",

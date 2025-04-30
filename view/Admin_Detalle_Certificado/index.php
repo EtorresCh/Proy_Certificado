@@ -44,12 +44,16 @@
               </div>
             </div>
             <div class="table-wrapper">
-              <table id="categoria_data" class="table display  responsive nowrap">
+              <table id="detalle_data" class="table display  responsive nowrap">
                 <thead>
                   <tr>
-                    <th class="wd-15p">1</th>
-                    <th class="wd-5p">2</th>
-                    <th class="wd-5p">3</th>
+                    <th class="wd-15p">Curso</th>
+                    <th class="wd-15p">Usuario</th>
+                    <th class="wd-5p">Fech. Inicio</th>
+                    <th class="wd-5p">Fech. Fin</th>
+                    <th class="wd-15p">Instructor</th>
+                    <th class="wd-5p"></th>
+                    <th class="wd-5p"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,7 +65,7 @@
     </div>
     <?php require_once 'modaldcertificado.php';?>
     <?php require_once '../html/MainJs.php';?>
-    <script type="text/javascript" src="admincategoria.js"></script>
+    <script type="text/javascript" src="admindcertificado.js"></script>
   </body>
 </html>
 <?php

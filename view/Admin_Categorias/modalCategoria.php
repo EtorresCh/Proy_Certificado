@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl" role="document"> <!-- Cambiado a modal-xl -->
         <div class="modal-content bd-0">
             <div class="modal-header pd-y pd-x-25">
-                <h6 class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold">Nuevo Registro</h6>
+                <h6  class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold"> Registro Categoria</h6>
             </div>
             <form method="post" id="categoria_form">
                 <div class="modal-body pd-25">
