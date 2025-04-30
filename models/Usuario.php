@@ -163,9 +163,7 @@
              $sql->execute();
              return $resultado=$sql->fetchAll();
        }
-
-
-       public function insert_usuario($usu_nom,$usu_apep,$usu_apem,$usu_correo,$usu_pass,$telefono,$rol_id){
+       public function insert_usuario($usu_nom,$usu_apep,$usu_apem,$usu_corr,$usu_pass,$telefono,$rol_id){
         $conectar = parent::conexion(); 
         parent::set_names();
         $sql = "INSERT INTO usuario (usu_id,usu_nom, usu_apep, usu_apem,usu_correo,usu_pass,fech_crea, est,telefono, rol_id) VALUES (null,?,?,?,?,?,1,now(),?,?)";
@@ -173,7 +171,7 @@
         $sql->bindValue(1, $usu_nom);
         $sql->bindValue(2, $usu_apep);
         $sql->bindValue(3, $usu_apem);
-        $sql->bindValue(4, $usu_correo);
+        $sql->bindValue(4, $usu_corr);
         $sql->bindValue(5, $usu_pass);
         $sql->bindValue(6, $telefono);
         $sql->bindValue(7, $rol_id);
@@ -181,7 +179,7 @@
         return $resultado=$sql->fetchAll();
     }
     
-    public function update_usuario($usu_id,$usu_nom,$usu_apep,$usu_apem,$usu_correo,$usu_pass,$telefono,$rol_id){
+    public function update_usuario($usu_id,$usu_nom,$usu_apep,$usu_apem,$usu_corr,$usu_pass,$telefono,$rol_id){
         $conectar = parent::conexion(); 
         parent::set_names();
         $sql = "UPDATE usuario 
@@ -198,7 +196,7 @@
         $sql->bindValue(1, $usu_nom);
         $sql->bindValue(2, $usu_apep);
         $sql->bindValue(3, $usu_apem);
-        $sql->bindValue(4, $usu_correo);
+        $sql->bindValue(4, $usu_corr);
         $sql->bindValue(5, $usu_pass);
         $sql->bindValue(6, $telefono);
         $sql->bindValue(7, $rol_id);
@@ -210,7 +208,20 @@
     public function get_usuario(){
         $conectar = parent::conexion(); 
         parent::set_names();
-        $sql = "SELECT * FROM usuario WHERE est = 1";
+        $sql = "SELECT 
+            usuario.usu_id,
+            usuario.usu_nom,
+            usuario.usu_apep,
+            usuario.usu_apem,
+            usuario.usu_corr,
+            usuario.usu_pass,
+            usuario.usu_sex,
+            usuario.telefono,
+            rol_usuario.rol_id,
+            rol_usuario.rol_tipo
+            FROM usuario
+            INNER JOIN rol_usuario ON usuario.rol_id = rol_usuario.rol_id
+            WHERE usuario.est = 1;";
         $sql = $conectar->prepare($sql);
         $sql->execute();
         return $resultado = $sql->fetchAll();

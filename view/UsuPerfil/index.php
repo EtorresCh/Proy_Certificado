@@ -35,7 +35,7 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label class="form-control-label">Nombre: <span class="tx-danger">*</span></label>
-                      <input class="form-control" type="text" name="usu_nom" id="usu_nom" placeholder="Ingrese Nombre" required>
+                      <input class="form-control" type="text" name="usu_nom" id="usu_nom" placeholder="Ingrese Nombre">
                     </div>
                   </div>
                   <div class="col-lg-6">

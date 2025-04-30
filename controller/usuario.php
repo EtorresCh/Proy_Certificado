@@ -101,6 +101,8 @@ switch ($_GET["op"]) {
                 $_POST["telefono"]
             );
         break;
+
+
     case "guardaryeditar":
         if (empty($_POST["usu_id"])) {
             $categoria->insert_usuario($_POST["cat_nom"]);
@@ -108,27 +110,40 @@ switch ($_GET["op"]) {
             $categoria->update_usuario($_POST["cat_id"], $_POST["cat_nom"]);
         }
         break;
-    case "mostrar":
-        $datos = $categoria->get_categoria_id($_POST["cat_id"]);
+     //Aqui muestra los datos de usuarios de editar para administrador    
+    case "mostrar_editar":
+        $datos = $usuario->get_usuario_x_id($_POST["usu_id"]);
         if (is_array($datos) == true and count($datos) > 0) {
             foreach ($datos as $row) {
-                $output["cat_id"] = $row["cat_id"];
-                $output["cat_nom"] = $row["cat_nom"];
+                $output["usu_id"] = $row["usu_id"];
+                $output["usu_nom"] = $row["usu_nom"];
+                $output["usu_apep"] = $row["usu_apep"];
+                $output["usu_apem"] = $row["usu_apem"];
+                $output["usu_corr"] = $row["usu_corr"];
+                $output["usu_pass"] = $row["usu_pass"];
+                $output["usu_sex"] = $row["usu_sex"];
+                $output["telefono"] = $row["telefono"];
+                $output["rol_id"] = $row["rol_id"]." " . $row["rol_tipo"];
             }
             echo json_encode($output);
         }
         break;
     case "eliminar":
-        $categoria->delete_categoria($_POST["cat_id"]);
+        $usuario->delete_usuario($_POST["usu_id"]);
         break;
     case "listar":
-        $datos = $categoria->get_categoria();
+        $datos = $usuario->get_usuario();
         $data= Array();
         foreach($datos as $row) {
             $sub_array = array();
-            $sub_array[] = $row["cat_nom"];
-            $sub_array[] = '<button type="button" onClick="editar(' . $row["cat_id"] . ');" id="' . $row["cat_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button>';
-            $sub_array[] = '<button type="button" onClick="eliminar(' . $row["cat_id"] . ');" id="' . $row["cat_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-close"></i></button>';
+            $sub_array[] = $row["usu_nom"];
+            $sub_array[] = $row["usu_apep"];
+            $sub_array[] = $row["usu_apem"];
+            $sub_array[] = $row["telefono"];
+            $sub_array[] = $row["usu_corr"];
+            $sub_array[] = $row["rol_tipo"];
+            $sub_array[] = '<button type="button" onClick="editar(' . $row["usu_id"] . ');" id="' . $row["usu_id"] . '" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button>';
+            $sub_array[] = '<button type="button" onClick="eliminar(' . $row["usu_id"] . ');" id="' . $row["usu_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-close"></i></button>';
             $data[] = $sub_array;
             }
             $result = array(

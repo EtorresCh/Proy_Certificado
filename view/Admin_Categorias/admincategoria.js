@@ -1,4 +1,7 @@
 var usu_id = $('#usu_idx').val();
+input.addEventListener('input', function() {
+    this.value = this.value.toUpperCase();
+  });
 function init(){
     $("#categoria_form").on("submit",function(e){
         guardaryeditar(e);
@@ -6,7 +9,6 @@ function init(){
 }
 function guardaryeditar() {
     var formData = new FormData($("#categoria_form")[0]);  
-    console.log(formData);  
     $.ajax({
         url: "../../controller/categoria.php?op=guardaryeditar", 
         type: "POST",

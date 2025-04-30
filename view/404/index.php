@@ -2,7 +2,7 @@
 <html lang="en" class="pos-relative">
   <head>
     <?php require_once '../html/MainHead.php';?>
-    <title>Bracket Responsive Bootstrap 4 Admin Template</title>
+    <title>Error 404</title>
     <style>
         :where(.theme-dark, [data-bs-theme="dark"]) .tblr-illustrations-not-found-a {
         fill: #1a2030;

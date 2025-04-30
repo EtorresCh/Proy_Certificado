@@ -47610,7 +47610,7 @@ a.hover-white-8:hover, a.hover-white-8:focus {
 }
 
 .tx-uppercase {
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .tx-lowercase {

@@ -86,5 +86,13 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();    
         }
+        public function get_curso_combo(){
+            $conectar = parent::conexion(); 
+            parent::set_names();
+            $sql = "SELECT * FROM curso WHERE est = 1";
+            $sql = $conectar->prepare($sql);
+            $sql->execute();
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 ?>

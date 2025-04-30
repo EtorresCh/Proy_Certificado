@@ -14,6 +14,7 @@ function guardaryeditar(e){
         contentType: false,
         processData: false,
         success: function(data){
+            console.log(data);
             $('#instructor_data').DataTable().ajax.reload();
             $('#modalInstructor').modal('hide');
             Swal.fire({
@@ -115,6 +116,7 @@ function eliminar(inst_id) {
         }
     });
 }
+
 
 function nuevo(){
     $('#lbltitulo').html('Nuevo Instructor');
