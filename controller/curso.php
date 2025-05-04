@@ -74,6 +74,9 @@
             echo $html;
         }
         break;
+        case "eliminar_curso_usuario":
+            $usuario->delete_curso_usuario($_POST["curusu_id"]);
+            break;    
 
     }
 ?>

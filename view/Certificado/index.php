@@ -10,16 +10,16 @@
       <div class="wd-lg-70p wd-xl-50p tx-center pd-x-40">
         <h1 class="tx-100 tx-xs-140 tx-normal tx-inverse tx-roboto mg-b-0">
           <canvas id="canvas"  height="350px"  width="600px" class="img-fluid" alt="Responsive image"></canvas> 
-          
         </h1>
-        <h5 class="tx-xs-24 tx-normal tx-info mg-b-20 lh-5">
-            The page your are looking for has not been found.
-        </h5>
         <p class="tx-16 mg-b-20 text-justify" id="cur_des">     
         </p>
         <div class="form-layout-footer">
-          <button class="btn btn-outline-info " id="btnpng"><i class="fa fa-send mg-r-10"></i>PNG</button>
-          <button class="btn btn-outline-success" id="btnpdf"><i class="fa fa-send mg-r-10"></i>PDF</button>
+          <button class="btn btn-outline-info" id="btnpng">
+            <i class="fas fa-image mg-r-10"></i>PNG
+          </button>
+          <button class="btn btn-outline-success" id="btnpdf">
+            <i class="fas fa-file-pdf mg-r-10"></i>PDF
+          </button>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <div id="modalusuario" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalUsuarioLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document"> <!-- Cambiado a modal-xl -->
+    <div class="modal-dialog modal-lg" role="document"> 
         <div class="modal-content bd-0">
             <div class="modal-header pd-y pd-x-25">
                 <h6  id="lbltitulo"class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold"></h6>

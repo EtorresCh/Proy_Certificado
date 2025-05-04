@@ -12,7 +12,7 @@ switch ($_GET["op"]) {
             $sub_array[] = $row["fech_ini"];
             $sub_array[] = $row["fech_fin"];
             $sub_array[] = $row["inst_nom"] . " " . $row["inst_apep"];
-            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-outline-primary btn-icon"><i  style="margin:3px" class="fa fa-id-card-o"></i></button>';
+            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-outline-primary btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
             $data[] = $sub_array;
         }
         $results = array(
@@ -63,7 +63,7 @@ switch ($_GET["op"]) {
             $sub_array[] = $row["fech_ini"];
             $sub_array[] = $row["fech_fin"];
             $sub_array[] = $row["inst_nom"] . " " . $row["inst_apep"];
-            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-outline-primary btn-icon"><i  style="margin:3px" class="fa fa-id-card-o"></i></button>';
+            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-outline-primary btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
             $data[] = $sub_array;
         }
         $results = array(
@@ -154,7 +154,7 @@ switch ($_GET["op"]) {
         echo json_encode($result);  
         break;  
     case "listar_cursos_usuario":
-        $datos = $usuario->get_cursos_usuario_id($_POST["curusu_id"]);
+        $datos = $usuario->get_cursos_usuario_id($_POST["cur_id"]);
         $data= Array();
         foreach($datos as $row) {
             $sub_array = array();
@@ -163,7 +163,7 @@ switch ($_GET["op"]) {
             $sub_array[] = $row["fech_ini"];
             $sub_array[] = $row["fech_fin"];
             $sub_array[] = $row["inst_nom"]." ".$row["inst_apep"];
-            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-warning btn-xs"><i class=" fa fa-id-card-o"></i></button>';
+            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-outline-primary btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
             $sub_array[] = '<button type="button" onClick="eliminar(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-close"></i></button>';
             $data[] = $sub_array;
             }
@@ -173,6 +173,6 @@ switch ($_GET["op"]) {
             "iTotalDisplayRecords"=>count($data),
             "aaData"=>$data);
         echo json_encode($result);  
-        break;     
+        break; 
         
 }

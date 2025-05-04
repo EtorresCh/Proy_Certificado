@@ -18,7 +18,7 @@
         </nav>
       </div>
       <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-        <h4 class="tx-gray-800 mg-b-5">D. Certificado</h4>
+        <h4 class="tx-gray-800 mg-b-5">Detalle Certificado</h4>
         <p class="mg-b-0">Mantenimiento</p>
       </div>
       <div class="br-pagebody">
@@ -30,7 +30,7 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                       <label class="form-control-label">Curso:<span class="tx-danger"> *</span></label>
-                      <select class="form-control select2" style="width:100%" data-placeholder="Seleccione" name="cur_id" id="cur_id" required>
+                      <select class="form-control select2" style=" width: 100%; Height: 100%;" data-placeholder="Seleccione" name="cur_id" id="cur_id" required>
                           <option label="Seleccione"></option>
                       </select>
                   </div>
@@ -43,7 +43,7 @@
                 </div>
               </div>
             </div>
-            <div class="table-wrapper">
+            <div class="table-wrapper"></div>
               <table id="detalle_data" class="table display  responsive nowrap">
                 <thead>
                   <tr>

@@ -268,7 +268,7 @@
         $sql->bindValue(1, $cur_id);
         $sql->execute();
         return $resultado=$sql->fetchAll();
-  }
+    }
 
     }
 ?>

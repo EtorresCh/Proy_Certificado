@@ -23,9 +23,19 @@
       </div>
       <div class="br-pagebody">
         <div class="br-section-wrapper">
-          <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Categorias</h6>
-          <p class="mg-b-30 tx-gray-600">Listado de Categorias.</p>
-          <button class="btn btn-success mg-b-10" id="add_button" type="button" onclick="nuevo()"><i class="fa fa-plus"></i> Nuevo Registro</button>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                  <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Categorias</h6>
+                  <p class="mg-b-30 tx-gray-600">Listado de Categorias.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group text-right">
+                <button class="btn btn-success mg-b-10" id="add_button" type="button" onclick="nuevo()"><i class="fa fa-plus"></i> Nuevo Registro</button>
+              </div>  
+            </div> 
+          </div>
             <div class="table-wrapper">
               <table id="categoria_data" class="table display  responsive nowrap">
                 <thead>

@@ -13,9 +13,21 @@ $(document).ready(function(){
             "aServerSide": true,
             dom: 'Bfrtip',
             buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
+                {
+                    extend: 'copyHtml5',
+                    text: 'Copiar',
+                    className: 'btn btn-primary'
+                },
+                {
+                    extend: 'excelHtml5',
+                    text: 'Exportar Excel',
+                    className: "btn btn-success"
+                },
+                {
+                    extend: 'csvHtml5',
+                    text: 'Exportar CSV',
+                    className: 'btn btn-info'
+                }
             ], 
             "ajax":{
                 url: "../../controller/usuario.php?op=listar_cursos_usuario",
@@ -57,26 +69,40 @@ $(document).ready(function(){
 });  
 
 
-function eliminar(usu_id) {
-    $('#modalusuario').modal('show');
-    $('#usu_id').val(usu_id);
-    $.ajax({
-        url: '../../controller/usuario.php?op=mostrar_editar',
-        type: 'POST',
-        data: { usu_id: usu_id },
-        dataType: 'json',
-        success: function(data) {
-            $('#usu_nom').val(data.usu_nom);
-            $('#usu_apep').val(data.usu_apep);
-            $('#usu_apem').val(data.usu_apem);
-            $('#usu_corr').val(data.usu_corr);   
-            $('#usu_pass').val(data.usu_pass);  
-            $('#telefono').val(data.telefono);
-            $('#rol_id').val(data.rol_id);trigger('change');   
-            $('#modalusuario').modal('hide');
+function certificado(curusu_id){
+    window.open('../Certificado/index.php?curusu_id='+ curusu_id +'','_blank');
+}  
+
+
+function eliminar(curusu_id) {
+    console.log("hasta aqui");
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡Esta acción no se puede deshacer!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminarlo'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '../../controller/curso.php?op=eliminar_curso_usuario',
+                type: 'POST',
+                data: { curusu_id: curusu_id },
+                success: function(response) {
+                    $('#detalle_data').DataTable().ajax.reload();
+                    Swal.fire(
+                        '¡Eliminado!',
+                        'El registro ha sido eliminado.',
+                        'success'
+                    );
+                }
+            });
         }
     });
 }
+
 
 function combo_curso(){
     $.post("../../controller/curso.php?op=combo", function(data){

@@ -94,5 +94,19 @@
             $sql->execute();
             return $sql->fetchAll(PDO::FETCH_ASSOC);
         }
+        public function delete_curso_usuario($curusu_id){
+            $conectar = parent::conexion(); 
+            parent::set_names();
+            $sql="UPDATE curso_usuario
+                SET 
+                    est=0
+                WHERE
+                 curusu_id=?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1,$curusu_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+          
+        }
     }
 ?>

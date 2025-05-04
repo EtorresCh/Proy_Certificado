@@ -39,9 +39,21 @@ $(document).ready(function(){
         "aServerSide": true,
         dom: 'Bfrtip',
         buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
+            {
+                extend: 'copyHtml5',
+                text: 'Copiar',
+                className: 'btn btn-primary'
+            },
+            {
+                extend: 'excelHtml5',
+                text: 'Exportar Excel',
+                className: "btn btn-success"
+            },
+            {
+                extend: 'csvHtml5',
+                text: 'Exportar CSV',
+                className: 'btn btn-info'
+            }
         ],
         "ajax":{
             url: "../../controller/curso.php?op=listar",

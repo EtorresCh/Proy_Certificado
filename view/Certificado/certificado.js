@@ -6,7 +6,8 @@
     var curusu_id = getUrlParameter('curusu_id');
     $.post("../../controller/usuario.php?op=mostrar_cursos_detalle", { curusu_id: curusu_id }, function (data) {
         data = JSON.parse(data);
-        $('#cur_des').html(data.cur_des);
+        $('#cur_id').html(data.cur_id);
+        console.log(data);
             ctx.drawImage(image,0,0,canvas.width,canvas.height);
             ctx.textAlign= 'center';
             ctx.textBaseline= 'middle';
@@ -22,7 +23,9 @@
 
             ctx.font= '12px Times New Roman';  
             ctx.fillText("Fecha Inicio:"+ ' '+ data.fech_ini+ '                '+ "Fecha Fin"+ ' ' + data.fech_fin,x,300);
-    });
+            
+        });
+   
 });
  $(document).on("click","#btnpng",function(){
     let lblng= document.createElement('a');
@@ -37,10 +40,6 @@
     doc.addImage( imgData,'PNG',30,15);
     doc.save('certificado.pdf');
  });
-
-
-
-
 
 
 var getUrlParameter = function getUrlParameter(sParam) {
