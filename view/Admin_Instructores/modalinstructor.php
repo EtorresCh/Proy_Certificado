@@ -1,4 +1,4 @@
-<div id="modalInstructor" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalInstructorLabel" aria-hidden="true">
+<div id="modalInstructor" class="modal fade" data-backdrop="static" data-keyboards="false">
     <div class="modal-dialog modal-lg" role="document"> <!-- Cambiado a modal-xl -->
         <div class="modal-content bd-0">
             <div class="modal-header pd-y pd-x-25">
