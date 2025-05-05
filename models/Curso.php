@@ -3,7 +3,7 @@
         public function insert_curso($cat_id,$cur_nom,$cur_des,$fech_ini,$fech_fin,$inst_id){
             $conectar = parent::conexion(); 
             parent::set_names();
-            $sql="INSERT INTO  curso (cur_id, cat_id, cur_nom, cur_des, fech_ini, fech_fin, inst_id, fech_crea, est) VALUES (null,?,?,?,?,?,?,now(),1);";
+            $sql="INSERT INTO  curso (cur_id, cat_id, cur_nom, cur_des, fech_ini, fech_fin, inst_id,cur_img ,fech_crea, est) VALUES (null,?,?,?,?,?,?,?,now(),1);";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$cat_id);
             $sql->bindValue(2,$cur_nom);
@@ -108,5 +108,16 @@
             return $resultado=$sql->fetchAll();
           
         }
+        public function insert_curso_usuario($cur_id,$usu_id){
+            $conectar =parent::conexion();
+            parent::set_names();
+            $sql="INSERT INTO curso_usuario(curusu_id, cur_id, usu_id, fech_cre, est) VALUES (null,?,?,now(),1)";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1,$cur_id);
+            $sql->bindValue(2,$usu_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+        
     }
 ?>

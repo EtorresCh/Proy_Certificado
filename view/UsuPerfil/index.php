@@ -62,15 +62,15 @@
                       <input class="form-control" type="text" name="usu_pass" id="usu_pass" placeholder="Ingrese Contraseña">
                     </div>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-md-6">    
                     <div class="form-group">
-                      <label class="form-control-label">Sexo: <span class="tx-danger">*</span></label>
-                      <select class="form-control select2" data-placeholder="Seleccione" name="usu_sex" id="usu_sex">
-                        <option label="Seleccione"></option>
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenino</option>
+                      <label class="form-control-label">Sexo:<span class="tx-danger"> *</span></label>
+                      <select class="form-control " style="width:100%" data-placeholder="Seleccione" name="usu_sex" id="usu_sex" required>
+                          <option label="Seleccione"></option>
+                          <option value="M">Masculino</option>
+                          <option value="F">Femenino</option>
                       </select>
-                    </div>
+                    </div>   
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">

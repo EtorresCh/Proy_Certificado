@@ -68,14 +68,7 @@ $(document).ready(function(){
     });
 });  
 
-
-function certificado(curusu_id){
-    window.open('../Certificado/index.php?curusu_id='+ curusu_id +'','_blank');
-}  
-
-
 function eliminar(curusu_id) {
-    console.log("hasta aqui");
     Swal.fire({
         title: '¿Estás seguro?',
         text: "¡Esta acción no se puede deshacer!",
@@ -102,20 +95,31 @@ function eliminar(curusu_id) {
         }
     });
 }
-
-
 function combo_curso(){
     $.post("../../controller/curso.php?op=combo", function(data){
         $('#cur_id').html(data);
     });
 }
+function certificado(curusu_id){
+    window.open('../Certificado/index.php?curusu_id='+ curusu_id +'','_blank');
+}  
+
 function nuevo(){
-    listar_usuario();
-    $('#lbltitulo').html('Nuevo Registro');
-    $('usuario_form')[0].reset();
-    $('#modaldCertificado').modal('show');
+    if  ($('#cur_id').val()==''){
+        Swal.fire({
+            title: 'Error!',
+            text: 'Selecciona Curso',
+            icon:'info',
+            confirmButtonText:'Aceptar'
+        })
+    }else{
+        $('#lbltitulo').html('Selecciona Usuario');
+        var cur_id = $('#cur_id').val();
+        listar_usuario(cur_id);
+        $('#modaldCertificado').modal('show');
+    }    
 }
-function listar_usuario(){
+function listar_usuario(cur_id){
     $('#usuario_data').DataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -138,8 +142,9 @@ function listar_usuario(){
             }
         ],
         "ajax":{
-            url: "../../controller/usuario.php?op=listar",
-            type :"post"
+            url: "../../controller/usuario.php?op=listar_detalle_usuario",
+            type :"post",
+            data:{cur_id:cur_id}
         },
 		"bDestroy": true,
 		"responsive": true,
@@ -172,4 +177,49 @@ function listar_usuario(){
 		},
 	});   
 }
+function registrardetalle() {
+    var table = $('#usuario_data').DataTable();
+    var usu_id = [];
+
+    table.rows().every(function(rowIdx, tableLoop, rowLoop) {
+        cell1 = table.cell({ row: rowIdx, column: 0 }).node();
+        if ($('input',cell1).prop("checked")==true) {
+            id=$('input',cell1).val();
+            usu_id.push([id]);
+        }
+    });
+    if (usu_id==0){
+        Swal.fire({
+            title: 'Error!',
+            text: 'Selecciona Usuarios',
+            icon:'info',
+            confirmButtonText:'Aceptar'
+        })
+    }else{
+        const formData = new FormData($("#form_detalle")[0]);
+        formData.append('cur_id',cur_id);
+        formData.append('usu_id',usu_id);
+        $.ajax({
+            url: "../../controller/curso.php?op=inser_curso_usuario",
+            type : "post",
+            data:formData,
+            contentType:false,
+            processData:false,
+            success: function(response) {
+                Swal.fire({
+                    title: 'Éxito!',
+                    text: 'Datos guardados correctamente',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                }).then(() => {
+                    $('#modaldCertificado').modal('hide'); 
+                    $('#detalle_data').DataTable().ajax.reload(); 
+                });
+            }
+        });
+        
+
+    }
+}
+
 init();

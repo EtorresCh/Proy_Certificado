@@ -11,7 +11,7 @@
         <h1 class="tx-100 tx-xs-140 tx-normal tx-inverse tx-roboto mg-b-0">
           <canvas id="canvas"  height="350px"  width="600px" class="img-fluid" alt="Responsive image"></canvas> 
         </h1>
-        <p class="tx-16 mg-b-20 text-justify" id="cur_des">     
+        <p class="tx-16 mg-b-20 text-center" id="cur_des">     
         </p>
         <div class="form-layout-footer">
           <button class="btn btn-outline-info" id="btnpng">

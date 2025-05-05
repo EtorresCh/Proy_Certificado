@@ -54,7 +54,8 @@
                 INNER JOIN usuario ON curso_usuario.usu_id = usuario.usu_id
                 INNER JOIN instructor ON curso.inst_id = instructor.inst_id
                 WHERE
-                curso_usuario.usu_id = ?";
+                curso_usuario.usu_id = ?
+                AND curso_usuario.est= 1";
              $sql=$conectar->prepare($sql);
              $sql->bindValue(1, $usu_id);
              $sql->execute();
@@ -74,6 +75,7 @@
                 usuario.usu_nom,
                 usuario.usu_apep,
                 usuario.usu_apem,
+                curso.cur_img,
                 instructor.inst_id,
                 instructor.inst_nom,
                 instructor.inst_apep,
@@ -83,7 +85,7 @@
             INNER JOIN usuario ON curso_usuario.usu_id = usuario.usu_id
             INNER JOIN instructor ON curso.inst_id = instructor.inst_id
             WHERE
-            curso_usuario.usu_id = ?";
+            curso_usuario.curusu_id = ?;";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$curusu_id);
             $sql->execute();
@@ -226,6 +228,18 @@
         $sql->execute();
         return $resultado = $sql->fetchAll();
     }
+    public function get_usuario_modal($cur_id){
+        $conectar = parent::conexion(); 
+        parent::set_names();
+        $sql = " SELECT * FROM usuario 
+        WHERE est = 1 
+        AND usu_id not in
+        (select usu_id  from curso_usuario where cur_id=?);";
+        $sql = $conectar->prepare($sql);
+        $sql->bindValue(1,$cur_id);
+        $sql->execute();
+        return $resultado = $sql->fetchAll();
+    }
     public function delete_usuario($usu_id){
         $conectar = parent::conexion(); 
         parent::set_names();
@@ -262,8 +276,7 @@
            INNER JOIN curso ON curso_usuario.cur_id = curso.cur_id
            INNER JOIN usuario ON curso_usuario.usu_id = usuario.usu_id
            INNER JOIN instructor ON curso.inst_id = instructor.inst_id
-           WHERE
-           curso_usuario.cur_id = ?";
+           WHERE curso_usuario.cur_id = ?  AND curso_usuario.est = 1;";
         $sql=$conectar->prepare($sql);
         $sql->bindValue(1, $cur_id);
         $sql->execute();

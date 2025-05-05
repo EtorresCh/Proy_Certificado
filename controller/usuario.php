@@ -25,7 +25,7 @@ switch ($_GET["op"]) {
         break;
     case "mostrar_cursos_detalle":
         $datos = $usuario->get_cursos_x_id_detalle($_POST["curusu_id"]);
-        if (is_array($datos) == true and count($datos) > 0) {
+        if (is_array($datos) == true and count($datos)<> 0) {
             foreach ($datos as $row) {
                 $output["curusu_id"] = $row["curusu_id"];
                 $output["cur_id"] = $row["cur_id"];
@@ -33,6 +33,7 @@ switch ($_GET["op"]) {
                 $output["cur_des"] = $row["cur_des"];
                 $output["fech_ini"] = $row["fech_ini"];
                 $output["fech_fin"] = $row["fech_fin"];
+                $output["cur_img"] = $row["cur_img"];
                 $output["usu_id"] = $row["usu_id"];
                 $output["usu_nom"] = $row["usu_nom"];
                 $output["usu_apep"] = $row["usu_apep"];
@@ -173,6 +174,26 @@ switch ($_GET["op"]) {
             "iTotalDisplayRecords"=>count($data),
             "aaData"=>$data);
         echo json_encode($result);  
-        break; 
+        break;
+    case "listar_detalle_usuario":
+        $datos = $usuario->get_usuario_modal($_POST['cur_id']);
+        $data= Array();
+        foreach($datos as $row) {
+            $sub_array = array();
+            $sub_array[] = '<input type="checkbox" name="detallecheck" value="' . $row['usu_id'] . '">';
+            $sub_array[] = $row["usu_nom"];
+            $sub_array[] = $row["usu_apep"];
+            $sub_array[] = $row["usu_apem"];
+            $sub_array[] = $row["usu_corr"];
+            $data[] = $sub_array;
+            }
+            $result = array(
+            "sEcho"=>1,
+            "iTotalRecords"=>count($data),
+            "iTotalDisplayRecords"=>count($data),
+            "aaData"=>$data);
+        echo json_encode($result);  
+        break;  
+   
         
 }

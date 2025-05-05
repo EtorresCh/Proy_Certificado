@@ -20,15 +20,15 @@
           <?php  
          } else{
           ?>
-            <a href="../Admin_Usuarios/" class="br-menu-link">
+           <a href="../Admin_Usuarios/" class="br-menu-link">
               <div class="br-menu-item">
-              <i class="menu-item-icon icon ion-person-stalker tx-24"></i>
+                <i class=" menu-item-icon icon  far fa-user tx-20"></i>
                 <span class="menu-item-label">Mnt. Usuarios</span>
               </div>
             </a>
             <a href="../Admin_Cursos/" class="br-menu-link">
               <div class="br-menu-item">
-              <i class="menu-item-icon icon icon ion-university tx-24"></i>
+              <i class="menu-item-icon icon far fa-file-alt tx-20"></i>
                 <span class="menu-item-label">Mnt. Cursos</span>
               </div>
             </a>

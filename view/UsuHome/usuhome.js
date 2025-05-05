@@ -49,3 +49,6 @@ $(document).ready(function(){
     },
    });
 });
+function certificado(curusu_id){
+    window.open('../Certificado/index.php?curusu_id='+ curusu_id +'','_blank');
+}  
