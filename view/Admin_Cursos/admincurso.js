@@ -145,6 +145,9 @@ function nuevo(){
     combo_instructor();
     $('#modalMantenimiento').modal('show');
 }
+function imagen(){
+    $('#modalFile').modal('show');
+}
 function combo_categoria(){
     $.post("../../controller/categoria.php?op=combo", function(data){
         $('#cat_id').html(data);

@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-6">
               <div class="form-group text-right">
-                <button class="btn btn-success mg-b-10" id="add_button" type="button" onclick="nuevo()"><i class="fa fa-plus"></i> Nuevo Registro</button>
+                <button class="btn btn-primary mg-b-10" id="add_button" type="button" onclick="nuevo()"><i class="fa fa-plus"></i> Nuevo Registro</button>
               </div>  
             </div> 
           </div>

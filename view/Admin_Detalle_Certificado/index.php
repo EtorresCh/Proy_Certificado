@@ -38,7 +38,7 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label">&nbsp;</label>
-                    <button class="btn btn-success form-control mg-b-10" id="add_button" type="button" onclick="nuevo()"><i class="fa fa-plus"></i> Nuevo Registro</button>
+                    <button class="btn btn-primary form-control mg-b-10" id="add_button" type="button" onclick="nuevo()"><i class="fa fa-plus"></i> Nuevo Registro</button>
                   </div>
                 </div>
               </div>
