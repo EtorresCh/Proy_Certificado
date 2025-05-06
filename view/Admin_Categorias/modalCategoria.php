@@ -1,5 +1,5 @@
 <div id="modalCategoria" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalCategoriaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document"> <!-- Cambiado a modal-xl -->
+    <div class="modal-dialog modal-sm" role="document"> <!-- Cambiado a modal-xl -->
         <div class="modal-content bd-0">
             <div class="modal-header pd-y pd-x-25">
                 <h6  class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold"> Registro Categoria</h6>

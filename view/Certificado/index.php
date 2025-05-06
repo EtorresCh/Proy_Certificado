@@ -2,7 +2,7 @@
 <html lang="en" class="pos-relative">
   <head>
     <?php require_once '../html/MainHead.php';?>
-    <title>Bracket Responsive Bootstrap 4 Admin Template</title>
+    <title>Certificado Usuario</title>
   </head>
 
   <body class="pos-relative">

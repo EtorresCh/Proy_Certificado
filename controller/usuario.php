@@ -12,7 +12,7 @@ switch ($_GET["op"]) {
             $sub_array[] = $row["fech_ini"];
             $sub_array[] = $row["fech_fin"];
             $sub_array[] = $row["inst_nom"] . " " . $row["inst_apep"];
-            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-outline-primary btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
+            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-dark active  btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
             $data[] = $sub_array;
         }
         $results = array(
@@ -64,7 +64,7 @@ switch ($_GET["op"]) {
             $sub_array[] = $row["fech_ini"];
             $sub_array[] = $row["fech_fin"];
             $sub_array[] = $row["inst_nom"] . " " . $row["inst_apep"];
-            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-outline-primary btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
+            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-dark active btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
             $data[] = $sub_array;
         }
         $results = array(
@@ -74,22 +74,6 @@ switch ($_GET["op"]) {
             "aaData" => $data
         );
         echo json_encode($results);
-        break;
-    case "mostrar":
-        $datos = $usuario->get_usuario_x_id($_POST["usu_id"]);
-        if (is_array($datos) == true and count($datos) > 0) {
-            foreach ($datos as $row) {
-                $output["usu_id"] = $row["usu_id"];
-                $output["usu_nom"] = $row["usu_nom"];
-                $output["usu_apep"] = $row["usu_apep"];
-                $output["usu_apem"] = $row["usu_apem"];
-                $output["usu_corr"] = $row["usu_corr"];
-                $output["usu_pass"] = $row["usu_pass"];
-                $output["usu_sex"] = $row["usu_sex"];
-                $output["telefono"] = $row["telefono"];
-            }
-            echo json_encode($output);
-        }
         break;
     case "update_perfil":
            $usuario->update_usuario_perfil(
@@ -102,17 +86,70 @@ switch ($_GET["op"]) {
                 $_POST["telefono"]
             );
         break;
-
-
     case "guardaryeditar":
         if (empty($_POST["usu_id"])) {
-            $categoria->insert_usuario($_POST["cat_nom"]);
+            $usuario->insert_usuario(
+                $_POST["usu_nom"],
+                $_POST["usu_apep"],
+                $_POST["usu_apem"],
+                $_POST["usu_corr"],
+                $_POST["usu_pass"],
+                $_POST["usu_sex"],
+                $_POST["telefono"],
+                $_POST["rol_id"],
+                $_POST["usu_dni"]
+            );
         } else {
-            $categoria->update_usuario($_POST["cat_id"], $_POST["cat_nom"]);
+            $usuario->update_usuario(
+                $_POST["usu_id"],
+                $_POST["usu_nom"],
+                $_POST["usu_apep"],
+                $_POST["usu_apem"],
+                $_POST["usu_corr"],
+                $_POST["usu_pass"],
+                $_POST["usu_sex"],
+                $_POST["telefono"],
+                $_POST["rol_id"],
+                $_POST["usu_dni"]
+            );
         }
         break;
+    case "mostrar":
+            $datos = $usuario->get_usuario_x_id($_POST["usu_id"]);
+            if (is_array($datos) == true and count($datos) > 0) {
+                foreach ($datos as $row) {
+                    $output["usu_id"] = $row["usu_id"];
+                    $output["usu_nom"] = $row["usu_nom"];
+                    $output["usu_apep"] = $row["usu_apep"];
+                    $output["usu_apem"] = $row["usu_apem"];
+                    $output["usu_pass"] = $row["usu_pass"];
+                    $output["usu_sex"] = $row["usu_sex"];
+                    $output["telefono"] = $row["telefono"];
+                }
+                echo json_encode($output);
+            }
+            break;
      //Aqui muestra los datos de usuarios de editar para administrador    
-    case "mostrar_editar":
+    case "consulta_dni":
+        $datos = $usuario->get_usuario_x_dni($_POST["usu_dni"]);
+        if (is_array($datos) == true and count($datos) > 0) {
+            foreach ($datos as $row) {
+                $output["usu_id"] = $row["usu_id"];
+                $output["usu_nom"] = $row["usu_nom"];
+                $output["usu_apep"] = $row["usu_apep"];
+                $output["usu_apem"] = $row["usu_apem"];
+                $output["usu_corr"] = $row["usu_corr"];
+                $output["usu_pass"] = $row["usu_pass"];
+                $output["usu_sex"] = $row["usu_sex"];
+                $output["telefono"] = $row["telefono"];
+                $output["rol_id"] = $row["rol_id"];
+                $output["usu_dni"] = $row["usu_dni"];
+            }
+            echo json_encode($output);
+        }
+        break;
+    
+     case "mostrar_editar":
         $datos = $usuario->get_usuario_x_id($_POST["usu_id"]);
         if (is_array($datos) == true and count($datos) > 0) {
             foreach ($datos as $row) {
@@ -124,7 +161,8 @@ switch ($_GET["op"]) {
                 $output["usu_pass"] = $row["usu_pass"];
                 $output["usu_sex"] = $row["usu_sex"];
                 $output["telefono"] = $row["telefono"];
-                $output["rol_id"] = $row["rol_id"]." " . $row["rol_tipo"];
+                $output["rol_id"] = $row["rol_id"];
+                $output["usu_dni"] = $row["usu_dni"];
             }
             echo json_encode($output);
         }
@@ -164,7 +202,7 @@ switch ($_GET["op"]) {
             $sub_array[] = $row["fech_ini"];
             $sub_array[] = $row["fech_fin"];
             $sub_array[] = $row["inst_nom"]." ".$row["inst_apep"];
-            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-outline-primary btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
+            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-dark active btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
             $sub_array[] = '<button type="button" onClick="eliminar(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-close"></i></button>';
             $data[] = $sub_array;
             }

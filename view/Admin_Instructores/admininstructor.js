@@ -98,6 +98,7 @@ function  editar(inst_id){
             $('#inst_telf').val(data.inst_telf);
             $('#inst_correo').val(data.inst_correo);
             $('#modalInstructor').modal('show');
+            $('#lbltitulo').html('Registro Instructor');
         }
     });
 }

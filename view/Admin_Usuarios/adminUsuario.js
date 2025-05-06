@@ -1,6 +1,7 @@
 var usu_id = $('#usu_idx').val();
 function init(){
     $("#usuario_form").on("submit",function(e){
+        e.preventDefault();
         guardaryeditar(e);
     });
 }
@@ -13,16 +14,21 @@ function guardaryeditar() {
         contentType: false,
         processData: false,
         success: function(data) {
-            $('#usuario_data').DataTable().ajax.reload();
-            $('#modalusuario').modal('hide');
             Swal.fire({
                 title: "Correcto!",
-                text: "El usuario se guardo correctamente!",
+                text: "El usuario se guardó correctamente!",
                 icon: "success"
-              });
+            }).then(() => {
+                $('#usuario_data').DataTable().ajax.reload();
+                $('#modalusuario').modal('hide');
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("Error AJAX:", error);
         }
     });
-}   
+}
+
 $(document).ready(function(){
     $('#rol_id').select2({
         dropdownParent: $('#modalusuario')
@@ -85,24 +91,22 @@ $(document).ready(function(){
 	});   
 });  
 function editar(usu_id) {
-    $('#modalusuario').modal('show');
-    $('#usu_id').val(usu_id);
-    $.ajax({
-        url: '../../controller/usuario.php?op=mostrar_editar',
-        type: 'POST',
-        data: { usu_id: usu_id },
-        dataType: 'json',
-        success: function(data) {
-            $('#usu_nom').val(data.usu_nom);
-            $('#usu_apep').val(data.usu_apep);
-            $('#usu_apem').val(data.usu_apem);
-            $('#usu_corr').val(data.usu_corr);   
-            $('#usu_pass').val(data.usu_pass);  
-            $('#telefono').val(data.telefono);
-            $('#rol_id').val(data.rol_id);trigger('change');   
-            $('#modalusuario').modal('hide');
-        }
+    $.post("../../controller/usuario.php?op=mostrar_editar",{ usu_id: usu_id},function(data) {
+        data=JSON.parse(data);
+        $('#usu_id').val(data.usu_id);
+        $('#usu_nom').val(data.usu_nom);
+        $('#usu_apep').val(data.usu_apep);
+        $('#usu_apem').val(data.usu_apem);
+        $('#usu_corr').val(data.usu_corr);   
+        $('#usu_pass').val(data.usu_pass); 
+        $('#usu_sex').val(data.usu_sex).trigger('change');   
+        $('#telefono').val(data.telefono);
+        $('#rol_id').val(data.rol_id).trigger('change');  
+        $('#usu_dni').val(data.usu_dni); 
+        $('#modalusuario').modal('hide');
     });
+    $('#modalusuario').modal('show');
+    $('#lbltitulo').html('Registro de  Usuario');
 }
 
 function eliminar(usu_id) {

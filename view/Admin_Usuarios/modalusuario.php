@@ -8,24 +8,30 @@
                 <div class="modal-body pd-25">
                     <input type="hidden" name="usu_id" id="usu_id">
                     <div class="row">
-                        <div class="col-md-12">    
+                        <div class="col-md-6">    
                             <div class="form-group">
                                 <label class="form-control-label">Nombre:<span class="tx-danger"> *</span></label>
                                 <input class="form-control tx-uppercase" id="usu_nom" type="text" name="usu_nom" required>
                             </div>    
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">    
                             <div class="form-group">
                                 <label class="form-control-label">Apellido Paterno:<span class="tx-danger"> *</span></label>
                                 <input class="form-control tx-uppercase" id="usu_apep" type="text" name="usu_apep" required>
                             </div>    
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">    
                             <div class="form-group">
                                 <label class="form-control-label">Apellido Materno:<span class="tx-danger"> *</span></label>
                                 <input class="form-control tx-uppercase" id="usu_apem" type="text" name="usu_apem" required>
+                            </div>    
+                        </div>
+                        <div class="col-md-6">    
+                            <div class="form-group">
+                                <label class="form-control-label">Dni:<span class="tx-danger"> *</span></label>
+                                <input class="form-control tx-uppercase" id="usu_dni" type="text" name="usu_dni" required>
                             </div>    
                         </div>
                     </div>
@@ -33,7 +39,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Correo Electronico:<span class="tx-danger"> *</span></label>
-                                <input class="form-control tx-uppercase" id="usu_corr" type="text" name="usu_corr" required>
+                                <input class="form-control tx-uppercase"  autocomplete="current-password" id="usu_corr" type="text" name="usu_corr" required>
                             </div> 
                         </div>    
                     </div>

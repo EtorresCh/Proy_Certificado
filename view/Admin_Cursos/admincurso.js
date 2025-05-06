@@ -3,6 +3,9 @@ function init(){
     $("#cursos_form").on("submit",function(e){
         guardaryeditar(e);
     });
+    $("#detalle_form").on("submit",function(e){
+        guardaryeditarimg(e);
+    });
 }
 function guardaryeditar(e){
     e.preventDefault(); 
@@ -145,7 +148,8 @@ function nuevo(){
     combo_instructor();
     $('#modalMantenimiento').modal('show');
 }
-function imagen(){
+function imagen(cur_id){
+    $('#curx_idx').val(cur_id);
     $('#modalFile').modal('show');
 }
 function combo_categoria(){
@@ -158,4 +162,27 @@ function combo_instructor(){
         $('#inst_id').html(data);
     });
 }
+
+function guardaryeditarimg(e) {
+    e.preventDefault(); 
+    var formData = new FormData($("#detalle_form")[0]);  
+    $.ajax({
+        url:"../../controller/curso.php?op=update_imagen_curso",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(data){
+            $('#cursos_data').DataTable().ajax.reload();
+            Swal.fire({
+                title: 'Correcto!',
+                text: 'El actualizo correctamente!',
+                icon: 'success',
+                confirmButtonText:'Aceptar'
+              });
+            $("#modalFile").modal('hide');
+        }
+    });
+}
+
 init();

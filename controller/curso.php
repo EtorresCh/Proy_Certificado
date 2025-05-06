@@ -49,7 +49,7 @@
         foreach($datos as $row) {
             $sub_array = array();
             $sub_array[] = $row["cat_nom"];
-            $sub_array[] = $row["cur_nom"];
+            $sub_array[] = '<a/ href="'.$row["cur_img"].'"target="_blank">'.strtoupper($row["cur_nom"]).'</a>';
             $sub_array[] = $row["fech_ini"];
             $sub_array[] = $row["fech_fin"];
             $sub_array[] = $row["inst_nom"]." ".$row["inst_apep"]." ".$row["inst_apem"];
@@ -81,9 +81,21 @@
         case"inser_curso_usuario":
             $datos =explode(',',$_POST['usu_id']);
                 foreach($datos as $row){
-                    $curso->insert_curso_usuario($_POST["cur_id"],$row);
+                    $sub_array=array();
+                    $idx=$curso->insert_curso_usuario($_POST["cur_id"],$row);
+                    $sub_array=$idx;
+                    $data[]=$sub_array;
                 }
-            break;      
+                echo json_encode($data);
+            break;
+        case "generar_qr":
+            require_once('phpqrcode/qrlib.php'); 
+            QRcode::png($_POST["curusu_id"],"../public/qr/",$_POST["curusu_id"]."png",'L',32,5);  
+            break; 
+        case "update_imagen_curso":
+            $curso->update_imagen_curso($_POST["curx_idx"],$_POST["cur_img"]);
+            break;
+
 
     }
 ?>

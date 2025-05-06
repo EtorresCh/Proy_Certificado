@@ -1,6 +1,7 @@
 var usu_id = $('#usu_idx').val();
 function init(){
     $("#categoria_form").on("submit",function(e){
+        e.preventDefault();
         guardaryeditar(e);
     });
 }
@@ -13,16 +14,21 @@ function guardaryeditar() {
         contentType: false,
         processData: false,
         success: function(data) {
-            $('#categoria_data').DataTable().ajax.reload();
-            $('#modalCategoria').modal('hide');
             Swal.fire({
                 title: "Correcto!",
-                text: "La categoria se guardo correctamente!",
+                text: "¡La categoría se guardó correctamente!",
                 icon: "success"
-              });
+            }).then(() => {
+                $('#categoria_data').DataTable().ajax.reload();
+                $('#modalCategoria').modal('hide');
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error("Error AJAX:", error);
         }
     });
-}   
+}
+   
 $(document).ready(function(){
     $('#categoria_data').DataTable({
         "aProcessing": true,

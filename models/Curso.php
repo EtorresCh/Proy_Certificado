@@ -60,9 +60,10 @@
                     curso.cur_des,
                     curso.fech_ini,
                     curso.fech_fin,
-                    categoria.cat_id,
+                    curso.cur_img,
+                    curso.cat_id,
                     categoria.cat_nom,
-                    instructor.inst_id,
+                    curso.inst_id,
                     instructor.inst_nom,
                     instructor.inst_apep,
                     instructor.inst_apem,
@@ -118,13 +119,31 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
+        public function update_imagen_curso($cur_id,$cur_img){
+            $conectar =parent::conexion();
+            parent::set_names();
+            require_once("Curso.php");
+            $curx=new Curso();
+            $cur_img='';
+            if($_FILES["cur_img"]["name"]!=''){
+                $cur_img=$curx->upload_file();
+            }
+            $sql="UPDATE curso
+            SET cur_img=?
+            where cur_id=?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1,$cur_img);
+            $sql->bindValue(2,$cur_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
         public function upload_file(){
-           if(isset($_FILES['#cur_img'])){
-              $extension=explode('',$_FILES['cur_img']['name']);
+           if(isset($_FILES["cur_img"])){
+              $extension=explode('.',$_FILES['cur_img']['name']);
               $new_name =rand() .'.'.$extension[1];
-              $destination="../../public/".$new_name;
+              $destination="../public/".$new_name;
               move_uploaded_file($_FILES['cur_img']['tmp_name'],$destination);
-              return $new_name;
+              return "../../public/".$new_name;
             }
         }
         

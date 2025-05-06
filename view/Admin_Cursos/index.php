@@ -40,11 +40,11 @@
               <table id="cursos_data" class="table display  responsive nowrap">
                 <thead>
                   <tr>
-                    <th class="wd-15p">Categoria</th>
-                    <th class="wd-15p">Nombre</th>
-                    <th class="wd-15p">Fech.Inicio</th>
-                    <th class="wd-15p">Fech.Fin</th>
-                    <th class="wd-15p">Instructor</th>
+                    <th class="wd-5p">Categoria</th>
+                    <th class="wd-5p">Nombre</th>
+                    <th class="wd-5p">Fech.Inicio</th>
+                    <th class="wd-5p">Fech.Fin</th>
+                    <th class="wd-5p">Instructor</th>
                     <th class="wd-5p"></th>
                     <th class="wd-5p"></th>
                     <th class="wd-5p"></th>

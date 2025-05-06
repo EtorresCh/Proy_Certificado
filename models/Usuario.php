@@ -140,6 +140,15 @@
              $sql->execute();
         return $resultado=$sql->fetchAll();
        }
+       public  function get_usuario_x_dni($usu_id){
+        $conectar = parent::conexion(); 
+             parent::set_names();
+             $sql="SELECT * FROM usuario WHERE est=1 and usu_dni=?";
+             $sql=$conectar->prepare($sql);
+             $sql->bindValue(1, $usu_id);
+             $sql->execute();
+        return $resultado=$sql->fetchAll();
+       }
         /* Actualizar datos del  usuario */
        public  function update_usuario_perfil($usu_id,$usu_nom,$usu_apep,$usu_apem,$usu_pass,$usu_sex,$telefono){
         $conectar = parent::conexion(); 
@@ -165,34 +174,38 @@
              $sql->execute();
              return $resultado=$sql->fetchAll();
        }
-       public function insert_usuario($usu_nom,$usu_apep,$usu_apem,$usu_corr,$usu_pass,$telefono,$rol_id){
+       public function insert_usuario($usu_nom,$usu_apep,$usu_apem,$usu_corr,$usu_pass,$usu_sex,$telefono,$rol_id,$usu_dni){
         $conectar = parent::conexion(); 
         parent::set_names();
-        $sql = "INSERT INTO usuario (usu_id,usu_nom, usu_apep, usu_apem,usu_correo,usu_pass,fech_crea, est,telefono, rol_id) VALUES (null,?,?,?,?,?,1,now(),?,?)";
+        $sql = "INSERT INTO usuario (usu_id,usu_nom, usu_apep, usu_apem,usu_corr,usu_pass,usu_sex,fech_crea, est,telefono, rol_id,usu_id) VALUES (null,?,?,?,?,?,?,now(),1,?,?,?)";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $usu_nom);
         $sql->bindValue(2, $usu_apep);
         $sql->bindValue(3, $usu_apem);
         $sql->bindValue(4, $usu_corr);
         $sql->bindValue(5, $usu_pass);
-        $sql->bindValue(6, $telefono);
-        $sql->bindValue(7, $rol_id);
+        $sql->bindValue(6, $usu_sex);
+        $sql->bindValue(7, $telefono);
+        $sql->bindValue(8, $rol_id);
+        $sql->bindValue(9, $usu_dni);
         $sql->execute();
         return $resultado=$sql->fetchAll();
     }
     
-    public function update_usuario($usu_id,$usu_nom,$usu_apep,$usu_apem,$usu_corr,$usu_pass,$telefono,$rol_id){
+    public function update_usuario($usu_id,$usu_nom,$usu_apep,$usu_apem,$usu_corr,$usu_pass,$usu_sex,$telefono,$rol_id,$usu_dni){
         $conectar = parent::conexion(); 
         parent::set_names();
         $sql = "UPDATE usuario 
         SET 
-            usu_nom=?
+            usu_nom=?,
             usu_apep=?,
             usu_apem=?,
-            usu_correo=?,
+            usu_corr=?,
             usu_pass=?,
+            usu_sex=?,
             telefono=?,
-            rol_id=?
+            rol_id=?,
+            usu_dni=?
         WHERE usu_id=?";
         $sql = $conectar->prepare($sql);
         $sql->bindValue(1, $usu_nom);
@@ -200,9 +213,11 @@
         $sql->bindValue(3, $usu_apem);
         $sql->bindValue(4, $usu_corr);
         $sql->bindValue(5, $usu_pass);
-        $sql->bindValue(6, $telefono);
-        $sql->bindValue(7, $rol_id);
-        $sql->bindValue(8, $usu_id);
+        $sql->bindValue(6, $usu_sex);
+        $sql->bindValue(7, $telefono);
+        $sql->bindValue(8, $rol_id);
+        $sql->bindValue(9, $usu_dni);
+        $sql->bindValue(10, $usu_id);
         $sql->execute();
         return true; 
     }
@@ -268,6 +283,7 @@
                usuario.usu_nom,
                usuario.usu_apep,
                usuario.usu_apem,
+               usuario.usu_dni,
                instructor.inst_id,
                instructor.inst_nom,
                instructor.inst_apep,
