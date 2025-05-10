@@ -1,8 +1,8 @@
-<div id="modalInstructor" class="modal fade" data-backdrop="static" data-keyboards="false">
+<div id="modalInstructor" class="modal modal-blur fade show" data-backdrop="static" data-keyboards="false">
     <div class="modal-dialog modal-lg" role="document"> <!-- Cambiado a modal-xl -->
         <div class="modal-content bd-0">
             <div class="modal-header pd-y pd-x-25">
-                <h6 id="lbltitulo"class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold"></h6>
+                <h4 id="lbltitulo"class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold"></h4>
             </div>
             <form method="post" id="instructor_form">
                 <div class="modal-body pd-25">

@@ -1,8 +1,8 @@
-<div id="modalFile" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalMantenimientoLabel" aria-hidden="true">
+<div id="modalFile" class="modal modal-blur fade show" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalMantenimientoLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document"> <!-- Cambiado a modal-xl -->
         <div class="modal-content bd-0">
             <div class="modal-header pd-y pd-x-25">
-                <h6  class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold"> Seleccione Imagen</h6>
+                <h4  class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold"> Seleccione Imagen</h4>
             </div>
             <form method="post" id="detalle_form">
                 <input type="hidden" name="curx_idx" id="curx_idx"/>

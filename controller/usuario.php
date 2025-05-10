@@ -12,7 +12,7 @@ switch ($_GET["op"]) {
             $sub_array[] = $row["fech_ini"];
             $sub_array[] = $row["fech_fin"];
             $sub_array[] = $row["inst_nom"] . " " . $row["inst_apep"];
-            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-dark active  btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
+            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-dark active  btn-icon"><i  class="fa-solid fa-id-card"></i></button>';
             $data[] = $sub_array;
         }
         $results = array(
@@ -64,7 +64,7 @@ switch ($_GET["op"]) {
             $sub_array[] = $row["fech_ini"];
             $sub_array[] = $row["fech_fin"];
             $sub_array[] = $row["inst_nom"] . " " . $row["inst_apep"];
-            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-dark active btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
+            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-dark active btn-icon"><i  class="fa-solid fa-id-card"></i></button>';
             $data[] = $sub_array;
         }
         $results = array(
@@ -202,7 +202,7 @@ switch ($_GET["op"]) {
             $sub_array[] = $row["fech_ini"];
             $sub_array[] = $row["fech_fin"];
             $sub_array[] = $row["inst_nom"]." ".$row["inst_apep"];
-            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-dark active btn-icon"><i style="margin:12px" class="fa-solid fa-id-card"></i></button>';
+            $sub_array[] = '<button type="button" onClick="certificado(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-dark active btn-icon"><i class="fa-solid fa-id-card"></i></button>';
             $sub_array[] = '<button type="button" onClick="eliminar(' . $row["curusu_id"] . ');" id="' . $row["curusu_id"] . '" class="btn btn-danger btn-xs"><i class="fa fa-close"></i></button>';
             $data[] = $sub_array;
             }

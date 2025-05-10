@@ -1,5 +1,5 @@
 <!-- JavaScript: jQuery y Bootstrap -->
-<script src="../../public/lib/jquery/jquery.js"></script>
+  <script src="../../public/lib/jquery/jquery.js"></script>
   <script src="../../public/lib/popper.js/popper.js"></script>
   <script src="../../public/lib/bootstrap/bootstrap.js"></script>
 

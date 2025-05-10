@@ -7,6 +7,7 @@
 <link href="../../public/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Iconos y animaciones -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
@@ -20,3 +21,7 @@
 
 <!-- Tu propio CSS -->
 <link href="../../public/css/bracket.css" rel="stylesheet">
+<link href="https://unpkg.com/@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet"/>
+
+<!-- Tabler Icons -->
+<link href="https://unpkg.com/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>

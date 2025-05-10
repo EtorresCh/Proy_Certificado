@@ -1,8 +1,8 @@
-<div id="modaldCertificado" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modaldCertificadoLabel" aria-hidden="true">
+<div id="modaldCertificado" class="modal modal-blur fade show" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modaldCertificadoLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document"> 
         <div class="modal-content bd-0">
             <div class="modal-header pd-y pd-x-25">
-                <h6  id="lbltitulo"class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold"></h6>
+                <h4  id="lbltitulo"class="text-14 mg-b-0 tx-uppercase tx-inverse tx_bold"></h4>
             </div>
             <div class="modal-body pd-25">
                 <input type="hidden" name="cur_id" id="cur_id">

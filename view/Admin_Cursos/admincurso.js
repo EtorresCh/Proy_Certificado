@@ -65,7 +65,7 @@ $(document).ready(function(){
 		"bDestroy": true,
 		"responsive": true,
 		"bInfo":true,
-		"iDisplayLength": 15,
+		"iDisplayLength": 5,
 	    "order": [[ 0, "asc" ]],
 	    "language": {
             "sProcessing":     "Procesando...",
